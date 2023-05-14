@@ -2,13 +2,17 @@
 Creación de variables
 
     Hay 3 formas de crear veariables:
-        var: una forma antigua de crear variables la cual NO DEBES USAR
-        let: forma correcta de crear variables capaces de cambiar de valor
-        const: varables en la memoria que no pueden cambiar
+        - var: una forma antigua de crear variables la cual NO DEBES USAR. Otro problema que estas tienen es que permiten guardar información que puede llegar a confundirse con las propierdades del window.
+        - let: forma correcta de crear variables capaces de cambiar de valor. Estas no interfieren con window 
+        - const: varables en la memoria que no pueden cambiar
     (Polyfill: código que provee el funcionamiento de nuevas caracte. de JS (ES6) en versiones viejas)
 
-    - Lo que lleva paréntesis son funciones o métodos y lo de su interior son los argumentos que recibe
-
-    
-
 ---------------------
+- Lo que lleva paréntesis son funciones o métodos y lo de su interior, son los argumentos que recibe
+
+- El script en html se colóca al final del body por buenas prácticas y por los posibles elementos bloqueantes que hayan en el .js que no dejen seguir cargando el propio html.
+El orden de las importaciones importan ya que si dependen de otros files, no se encontrará la info. si no es en el orden que debe
+
+
+
+

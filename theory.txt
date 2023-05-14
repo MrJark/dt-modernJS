@@ -72,4 +72,7 @@ Arreglos / arrays
         Estar entre corchetes [ ]
         Empiezan por la posición 0
     Todos los arreglos normalmente tienen el mismo tipo de datos(strings, numbers, symbols, etc)
+
+    En el file de array.js también hay teoría sobre los distintos métodos de los arrays
+
     

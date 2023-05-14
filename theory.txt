@@ -42,5 +42,34 @@ Datos Primitivos
         5. Strings
         6. Symbols -> es un valor único que no pueden ser iguales
     
+-----------------------
 
+Palabras reservadas
 
+    Hay palabras que no puedes usar porque js u otros archivos las usan para acciones específicas como son: const, var, let, if, for, while, try, etc.
+
+    No puedes poner let const = 123; Esto te dará errror. Pero si puedes poner let constante = 123; porqeu es en español y no es esa keyword
+
+    Página para validar si la palabra que vas a usar se permite o no:
+    https://mothereff.in/js-variables#ಠ%5fಠ
+
+    Página para saber que palabras existen:
+    https://mathiasbynens.be/notes/javascript-identifiers
+
+    No debes usar carácteres especiales, aunque los lea porque pueden dar errores. Esto uncluye la ' ñ '
+
+    Red flag para nombrar variables:
+        - No se puede iniciar por números
+        - No iniciar por mayúsculas
+        - No poner puntos (significa que quieres un método)
+        - No colocar carácteres especiales 
+
+--------------------------
+
+Arreglos / arrays 
+
+    Son objetos parecidos a una lista de información que contienen un grupo de elementos y de caracterizan por :
+        Estar entre corchetes [ ]
+        Empiezan por la posición 0
+    Todos los arreglos normalmente tienen el mismo tipo de datos(strings, numbers, symbols, etc)
+    

@@ -1,0 +1,4 @@
+
+// alert(' '); 
+// prompt (' ');
+// confirm (' '); 

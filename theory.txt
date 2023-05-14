@@ -3,16 +3,44 @@ Creación de variables
 
     Hay 3 formas de crear veariables:
         - var: una forma antigua de crear variables la cual NO DEBES USAR. Otro problema que estas tienen es que permiten guardar información que puede llegar a confundirse con las propierdades del window.
+        Esta solo es para navegadores viejos
         - let: forma correcta de crear variables capaces de cambiar de valor. Estas no interfieren con window 
         - const: varables en la memoria que no pueden cambiar
     (Polyfill: código que provee el funcionamiento de nuevas caracte. de JS (ES6) en versiones viejas)
 
 ---------------------
-- Lo que lleva paréntesis son funciones o métodos y lo de su interior, son los argumentos que recibe
+- Lo que lleva paréntesis son funciones o métodos y lo de su interior, son los argumentos o parámetros que recibe
 
 - El script en html se colóca al final del body por buenas prácticas y por los posibles elementos bloqueantes que hayan en el .js que no dejen seguir cargando el propio html.
 El orden de las importaciones importan ya que si dependen de otros files, no se encontrará la info. si no es en el orden que debe
 
+- Null ≠ undefined
 
+----------------------
+
+Prompt, confirm y alert
+
+    Son formas de interactuar con los usuarios. Estas son bloqueantes, es decir, no deja que nada más pase o cargue hasta que el usuario haya realizado la acción que se le pide, en este caso dar a botones o rellenar algún Prompt
+
+    Estas son funciones que está dentro del objeto window. Si el código va a funcionar en un backend(node), el objeto window no existe y se tiene que llamar el objeto 'global'
+
+    Ej:
+        - alert(' '); -> tiene para dar ok o cancel
+        - prompt (' ') -> te da para rellenar un campo o dejarlo undefined
+        - confirm (' ') -> te da para responder si o no y devuelve un boolean
+
+------------------------
+
+Datos Primitivos
+
+    js es un lenguaje de tipado débil, es decir, no hace falta decir que es lo qeu vamos a hacer o guardar en una variable 
+    Los valores primitivos son valores que no son objetos y que son inmutables, hay 6 tipos:
+        1. boolean (true/false)
+        2. Null (se puede ver tb como un objeto)
+        3. undefined
+        4. Numbers
+        5. Strings
+        6. Symbols -> es un valor único que no pueden ser iguales
+    
 
 

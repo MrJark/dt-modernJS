@@ -1,0 +1,14 @@
+
+Creación de variables
+
+    Hay 3 formas de crear veariables:
+        var: una forma antigua de crear variables la cual NO DEBES USAR
+        let: forma correcta de crear variables capaces de cambiar de valor
+        const: varables en la memoria que no pueden cambiar
+    (Polyfill: código que provee el funcionamiento de nuevas caracte. de JS (ES6) en versiones viejas)
+
+    - Lo que lleva paréntesis son funciones o métodos y lo de su interior son los argumentos que recibe
+
+    
+
+---------------------

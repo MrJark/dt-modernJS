@@ -90,4 +90,16 @@ Objetos Literales
         - sacar info del propio objeto, sea cual sea el tipo de info (array, objetos, numeros, etc)
     
     Propiedades de todos los objetos: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+------------------------------
+
+Diferencia entre función y método
+
+    Un método es una funcion que se encuentra dentro de un objeto mientras que una función es un pedazo de código el cual contiene elementos que vamos a reutilizar
+
+------------------------------
+
+Funciones 
+
+    Buenas prácticas: colocarlas al inicio del file
     

@@ -85,4 +85,9 @@ Objetos Literales
     Pueden tener los elementos que quieran pero siempre estos dos valores
     Para obtener los valores de las llaves, tienes que poner el nombre de la variable, un punto y el nombre de la key, es decir,
         heroe(nombre de la variable).nombre(key) -> Tony Stark(value de la key)
-     
+    En el literal-object.js también hay teoría a cerca de:
+        - conversión de objetos a arrays
+        - sacar info del propio objeto, sea cual sea el tipo de info (array, objetos, numeros, etc)
+    
+    Propiedades de todos los objetos: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object
+    

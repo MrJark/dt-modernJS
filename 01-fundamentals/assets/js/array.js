@@ -59,3 +59,4 @@ console.log(juegos);
 //Método para saber en que posición está un elemento. !Impotante: las mayúsculas son importantes y saber lo que quieres buscar también
 let index4Zelda = juegos.indexOf('Zelda');
 console.log('Zelda esté en la posición ',index4Zelda);
+

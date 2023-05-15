@@ -1,5 +1,5 @@
 
-let heroe = {
+const heroe = {
     nombre: 'Tony Stark',
     edad: 40,
     codeName: 'IronMan',
@@ -45,3 +45,14 @@ console.log('Última Película:', heroe['Última Película']); // como es entre 
 delete heroe.edad
 console.log('Edad', heroe.edad); // da undefined
 
+// Hacer que un objeto se comporte como un array, donde sean pares 0-1
+const entriesPares = Object.entries(heroe);
+
+// Crear nuevas propiedades
+heroe.casado = true; // con esto ya le estás añadiendo una propiedad
+console.log(heroe);
+
+// Bloquear el acceso a añadir o eliminar información
+// Dato: Aun teniendo la palabra reservada const en 'heroe' se sigue pudiendo hacer modificaciones en sus propiedades, lo que no se puede hacer co const es dar un nuevo valor directamente por ejemplo: heroe = capitanAmerica;
+Object.freeze(heroe);// esto es lo que bloquea el objeto a partir de esta línea en adelante, todo lo que pase anteriormente es posible.
+// Esta propiedad no permite la modificación de la propiedad pero si permite la modificación del interior de donde apunta, es decir, puedo modificar el objeto dentro de la propiedad. Puedo cambiar donde vive, su ubicaciñon, los trajes que tiene,e tc

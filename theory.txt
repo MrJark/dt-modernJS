@@ -102,4 +102,4 @@ Diferencia entre función y método
 Funciones 
 
     Buenas prácticas: colocarlas al inicio del file
-    
+    Si una función no tiene un 'return' explícito, devuelve undefined

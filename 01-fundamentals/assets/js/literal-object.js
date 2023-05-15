@@ -40,3 +40,8 @@ const isTony = 'vivo';
 console.log('Está vivo?', heroe[isTony]);
 
 console.log('Última Película:', heroe['Última Película']); // como es entre comillas ese método, no puede cogerlo a través del punto y si coloca con corchetes simples y entre comillas simples o dobles
+
+// Para borrar una propiedad usas la palabra reservada 'delete'
+delete heroe.edad
+console.log('Edad', heroe.edad); // da undefined
+

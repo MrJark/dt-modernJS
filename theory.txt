@@ -69,10 +69,20 @@ Palabras reservadas
 Arreglos / arrays 
 
     Son objetos parecidos a una lista de información que contienen un grupo de elementos y de caracterizan por :
-        Estar entre corchetes [ ]
+        Estar entre corchetes(lisos) [ ]
         Empiezan por la posición 0
     Todos los arreglos normalmente tienen el mismo tipo de datos(strings, numbers, symbols, etc)
 
     En el file de array.js también hay teoría sobre los distintos métodos de los arrays
 
-    
+----------------------------
+
+Objetos Literales
+
+    Son aquellos que tienen corchetes curvos { } y siempre tienen un par de valores:
+        - key: 
+        - value:
+    Pueden tener los elementos que quieran pero siempre estos dos valores
+    Para obtener los valores de las llaves, tienes que poner el nombre de la variable, un punto y el nombre de la key, es decir,
+        heroe(nombre de la variable).nombre(key) -> Tony Stark(value de la key)
+     

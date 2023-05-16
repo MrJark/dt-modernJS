@@ -18,3 +18,9 @@ Estructuras de control
 
     Son aquellas estructuras que te permiten controlar como fluye el flujo de lectura teniendola capacidad de repetir, volver o seguir
     Estas estructuras son los if - else
+
+------------------
+
+Lógica booleana
+
+    

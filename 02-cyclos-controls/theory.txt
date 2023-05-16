@@ -1,0 +1,13 @@
+
+Pasar información por valor y referencia
+
+    Cuando trabajamos con primitivos, cualquier asignación a variables o asignaciones a los argumentos de las funciones, lo estás enviando por valor, es decir, no estás afectando el disco local en memoria, solo estás pasando el valor
+
+    Cuándo se pasa por referencia y cuándo no?
+
+        Todos los objetos son pasados por referencia mientras que todos los primitivos(boolean, null, undefined, strings, numbers, symbols) se pasan por valor
+        Explicación: https://keepcoding.io/blog/pasar-variable-por-valor-referencia-javascript/#
+    
+    Para romper estas referencias, tienes que usar el operador 'spread' que son los 3 puntos antes del valor ' ... ' que si se pone entre los paréntesis, en un argumento, se comporta como un parámetro 'rest', lo que quiere decir es que junta todos los argumentos en una sola variable y lo transforma en un arreglo.
+    Solo y tan solo se comporta como un 'rest' dentro de paréntesis, en argumentos, sino siempre es un 'spread'
+    Aquí la info: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Spread_syntax

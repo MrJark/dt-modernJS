@@ -23,4 +23,8 @@ Estructuras de control
 
 Lógica booleana
 
+-------------------
+
+Operadores Ternarios
+
     

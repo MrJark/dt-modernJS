@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>BlackJack</title>
+</head>
+<body>
+    <header class="titulo">
+        BlackJack
+    </header>
+<!-- Las clases que estoy poniendo en los contenedores son las que ya vienen pre-establecidas por bootstrap -->
+    <div class="row mt-2">
+        <div class="col text-center">
+            <button class="btn btn-danger">Nuevo Juego</button>
+            <button class="btn btn-primary">Pedir Carta</button>
+            <button class="btn btn-primary">Detener</button>
+        </div>
+    </div>
+    <div class="row container">
+        <div class="col">
+            <h1>Jugador</h1>
+            <div id="jugador-cartas">
+                <img class="carta" src="assets/cards/2S.png" alt="Carta">
+                <img class="carta" src="assets/cards/2S.png" alt="Carta">
+                <img class="carta" src="assets/cards/2S.png" alt="Carta">
+                <img class="carta" src="assets/cards/2S.png" alt="Carta">
+            </div>
+        </div>
+    </div>
+
+    <div class="row container mt-5">
+        <div class="col">
+            <h1>Máquina</h1>
+            <div id="maquina-cartas">
+                <img class="carta" src="assets/cards/3S.png" alt="Carta">
+                <img class="carta" src="assets/cards/3S.png" alt="Carta">
+                <img class="carta" src="assets/cards/3S.png" alt="Carta">
+                <img class="carta" src="assets/cards/3S.png" alt="Carta">
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/game.js"></script>
+</body>
+</html>

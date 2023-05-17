@@ -1,0 +1,29 @@
+
+html, body {
+    background: rgb(10, 67, 10);
+    margin: 0;
+    color: rgb(244, 236, 236);
+}
+
+.titulo {
+    text-align: center;
+    background: rgb(39, 38, 38);
+    color: azure;
+    padding: 20px;
+    font-size: 24px;
+}
+
+.container {
+    background: rgb(10, 67, 10);
+}
+.carta {
+    width: 100px;
+    position: relative;
+    left: 100px;
+    margin-left: -75px;
+}
+
+#maquina-cartas,
+#jugador-cartas {
+    height: 140px;
+}

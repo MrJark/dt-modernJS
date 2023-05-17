@@ -32,3 +32,9 @@ Operadores Ternarios
 Ciclos While y Do While
 
     Ambos sirven para lo mismo pero La diferencia entre el ciclo while y el do while es que en el primero la secuencia se ejucuta hasta que la condición en el while sea falsa, y en el do while la secuencia se ejecuta y luego se evalual la condición, si esta es verdadera se vuelve a ejecutar la secuencia hasta que sea falsa.
+
+-------------------
+
+Ciclos for
+
+    

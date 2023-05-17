@@ -21,9 +21,15 @@ const crearDeck = () => {
             deck.push(fig + tipo);
         }
     }
+    console.log(deck);
+    deck = _.shuffle(deck);
+    console.log(deck); // este me lo da aleatorio gracias al shuffle()
+    return deck;
 };
+crearDeck();
 /*
 el problema es que si llamo a la función, para dar cartas, al estar ordenadas, no tendría sentido el juego por tanto para darlas aleatorias, tengo que llamar a una libreria de terceros ya que aun no se puede en js (2023) hacerlo desde aquí
 la librería es: https://underscorejs.org
 La función que queremos aquí es la de .shuffle() la cual devuelve un objeto con el contenido aleatorio
+el shortcute para el underscore es ' _ ' el guión bajo
 */

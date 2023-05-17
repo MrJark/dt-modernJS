@@ -21,7 +21,8 @@ for ( let i in heroes ) {
     console.log(heroes[i]);
 };
 /**
- * Los ciclos for in iteran sobre todas las propiedades de un objeto
+ * Los ciclos for in iteran sobre todas las propiedades de un objeto y son la 'sustitución' de los for tradicionales
+ * 
  */
 
 console.warn('Ciclo "for of" ');
@@ -32,5 +33,5 @@ for ( let heroe of heroes ) {
 /**
  * Estos ciclos se acostumbra poner la variable que queires hacer log, en este caso heroe, en singular en comparación al objeto que se va a mapear. Si fuera el objeto patatas, el let sería patata
  * Estos ciclos for of no se pueden dar en todos los objetos, es específica para las colecciones
- * 
+ * Se usa mucho para obtener referencias de los valores del objeto
  */

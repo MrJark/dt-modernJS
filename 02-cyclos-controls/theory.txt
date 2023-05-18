@@ -38,3 +38,25 @@ Ciclos While y Do While
 Ciclos for
 
 --------------------
+
+DOM - Document object Media
+
+    El DOM solo funciona en la web ya que es algo "visual" y es la manipulación de elementos del html a través de js
+    Esta manipulación se inicializa con la palabra ' document. '
+    Algunas instrucciones son:
+
+        - document.querySelector( ' ' ); -> esto te permite seleccionar un elemento del html que dependerá de lo que pongas entre las comillas
+        - document.querySelector('').innerText = algo ; -> permite poner cualquier tipo de texto sea string o número 
+        - document.querySelector('').innerHTML = algo ; -> la diferencia es que este me permite poner cualquier elemento HTML donde yo lo esté seleccionando, permite por div, h2, h3, etc Todo lo que tenga que ver con elemento HTML, el prinero es solo para texto
+        - document.getElementById ('') ;
+        - document.getElementByClassName ('') ;
+        - document.body(); -> hace referencia a todo el body y si después del body hago un .append() es para añadirle algo, como si fuera un elemento más
+    
+    En los querySelector que no se especifíca nada de Id o className, si queremos señalar a una clase o a un id tendremos que poner antes de su nombre identificativo y un # o un . respectivamente
+    Para hacer un programa más eficiente estos documents los guardamos en variables para llamarlos cuando hagan falta y así no repetir código
+
+    Creacion de elementos desde cero en el DOM
+
+        - document.createElement (''); -> esto espera un tag-name, es decir, un elemento de html, no un nombre de una clase
+        - (nombre del elemento al que quieres añadirle algo).appendChild ( lo que queires añadirle ); propiedad que permite crear nuevos elementos y añadirlos al que quieras
+        - (nombre elemento).classList.add(nombre de la clase que quieres añadirle al elemento);

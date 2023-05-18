@@ -48,11 +48,43 @@ const pedirCarta = () => {
     if ( deck.length === 0) {
         throw 'No quedan cartas en el deck'
     }
-
     const carta = deck.shift();
     // delete deck.carta;
 
-    console.log(deck);
     console.log(carta);
-}
+};
 pedirCarta();
+
+
+// const valorCarta = (carta) => {
+//     // en los strings también se pueden extraer los valores de las posiciones por tanto, para saber que valor tiene cada carta, indistintamente del palo, necesitas el número o la figura inicial
+//     // const valor = carta[0]; El problema de este modo es que en el 10 hay un problema porque son dos números iniciales 
+//     const value = carta.substring(0, carta.length - 1);// este método permite extraer ese string de la carta. O lo que se hace en este caso es partir de la posición cero y eliminar el último starting que es el palo. Por tanto, si tienes el 2C, elimina solo 'C' pero si tienes el 10C, elimina tb 'C' porque es el lenght -1
+//     let puntos = 0; // inicializar los puntos que lleva
+//     if ( isNaN( value ) ) { // el isNaN evalua si es un nombre, es decir, devolverá true si es un nombre o si no es un número
+//         puntos = ( value === 'A') ? 11 : 10; // para las figuras salvo el As que vale 11 puntos, las demnás figuras valen 10
+
+//     } else {
+//         puntos = value * 1; // hacemos esta multiplicación para pasar de string a numeral 
+//     }
+//     console.log(puntos);
+// };
+// valorCarta('QS');
+// simplificación con ternarios
+const valorCarta = ( carta ) => {
+    const value = carta.substring(0, carta.length -1); // sacamos el valor de la carta EN STRING
+    return ( inNaN (value) ) ? // si el valor NO es un NÚMERO 
+            (value === 'A') ? 11 : 10 // si es A vale 11, las demás letras 10
+            : valor * 1; // si es cualquiero cosa ≠ noun multiplicala por 1 para transformar ese valor noun a number
+};
+valorCarta('QS');
+
+// Reto: reducir la función valorCarta a las mínimas expresiones posibles
+// const valorCarta2 = ( carta ) => {
+//     const value = carta.substring(0, carta.length - 1);
+//     // let puntos = 0;
+//     if (isNaN (value)) (value === 'A') ? 11 : 10 && value * 1;
+//     console.log(value);
+// }
+// valorCarta2('3S');
+// no lo he conseguido, esta era mi solución, me da un string y no un número

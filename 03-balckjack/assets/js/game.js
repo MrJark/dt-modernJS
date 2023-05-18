@@ -75,9 +75,8 @@ const valorCarta = ( carta ) => {
     const value = carta.substring(0, carta.length -1); // sacamos el valor de la carta EN STRING
     return ( isNaN (value) ) ? // si el valor NO es un NÚMERO 
             (value === 'A') ? 11 : 10 // si es A vale 11, las demás letras 10
-            : valor * 1; // si es cualquiero cosa ≠ noun multiplicala por 1 para transformar ese valor noun a number
+            : value * 1; // si es cualquiero cosa ≠ noun multiplicala por 1 para transformar ese valor noun a number
 };
-valorCarta(pedirCarta());
 
 // Reto: reducir la función valorCarta a las mínimas expresiones posibles
 // const valorCarta2 = ( carta ) => {
@@ -88,3 +87,6 @@ valorCarta(pedirCarta());
 // }
 // valorCarta2('3S');
 // no lo he conseguido, esta era mi solución, me da un string y no un número
+
+// Eventos
+

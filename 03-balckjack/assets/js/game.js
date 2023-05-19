@@ -56,7 +56,6 @@ const pedirCarta = () => {
 };
 pedirCarta();
 
-
 // const valorCarta = (carta) => {
 // en los strings también se pueden extraer los valores de las posiciones por tanto, para saber que valor tiene cada carta, indistintamente del palo, necesitas el número o la figura inicial
 // const valor = carta[0]; El problema de este modo es que en el 10 hay un problema porque son dos números iniciales 
@@ -72,22 +71,45 @@ pedirCarta();
 // };
 // valorCarta('QS');
 // simplificación con ternarios
+
 const valorCarta = ( carta ) => {
+    // Reto: reducir la función valorCarta a las mínimas expresiones posibles
+    // const valorCarta2 = ( carta ) => {
+    //     const value = carta.substring(0, carta.length - 1);
+        // let puntos = 0;
+    //     if (isNaN (value)) (value === 'A') ? 11 : 10 && value * 1;
+    //     console.log(value);
+    // }
+    // valorCarta2('3S');
+    // no lo he conseguido, esta era mi solución, me da un string y no un número
     const value = carta.substring(0, carta.length -1); // sacamos el valor de la carta EN STRING
     return ( isNaN (value) ) ? // si el valor NO es un NÚMERO 
             (value === 'A') ? 11 : 10 // si es A vale 11, las demás letras 10
             : value * 1; // si es cualquiero cosa ≠ noun multiplicala por 1 para transformar ese valor noun a number
 };
 
-// Reto: reducir la función valorCarta a las mínimas expresiones posibles
-// const valorCarta2 = ( carta ) => {
-//     const value = carta.substring(0, carta.length - 1);
-//     // let puntos = 0;
-//     if (isNaN (value)) (value === 'A') ? 11 : 10 && value * 1;
-//     console.log(value);
-// }
-// valorCarta2('3S');
-// no lo he conseguido, esta era mi solución, me da un string y no un número
+const turnoPC = ( puntosMinimos ) => {
+    // para esta funcióbn necesito el ciclo do while porque al menos tengo que ejecutar el código una vez
+    // el código es muy parecido al de btnPedir ya que tengo que crear los mismos elementos pero con una lógica distinta
+    // como es un código que hemos pegado, se puede inicializar y tan solo nombrarlo para cada función
+    do {    
+        const card = pedirCarta();
+        puntosPC = puntosPC + valorCarta(card);
+        scorePC.innerHTML = puntosPC;
+
+        const cardImg = document.createElement('img');
+        cardImg.src = `assets/cards/${card}.png`;
+        card.alt = `el valor de la carta es ${card}`; // así no se le añade el alt
+        cardImg.classList.add('carta');
+
+        cardsPC.append(cardImg);
+
+        if (puntosMinimos > 21) { // esto es para que cuando el jugador se pase de 21, lo único que tiene que hacer el PC es sacar una carta para ganar y para ahí
+            break;
+        }
+
+    } while ((puntosPC < puntosMinimos) && (puntosMinimos <= 21));
+}
 
 /*--------------------- */
 // Eventos
@@ -103,4 +125,34 @@ btnPedir.addEventListener('click', () => { // las funciones que se encuentran en
     // scorePlayer.innerText(puntosJugador); // No funciona
     // scorePlayer.appendChild(puntosJugador); // No funciona
     scorePlayer.innerHTML = puntosJugador;
+
+    // Creamos ahora las imágenes de las cartas que salgan
+    const cardImg = document.createElement('img');
+    cardImg.src = `assets/cards/${card}.png`; // para crear el src de la carta y que exista
+    card.alt = `el valor de la carta es ${card}`
+    cardImg.classList.add('carta'); //añado el style de la carta
+
+    cardsPlayer.append(cardImg);
+
+    // Bloquear el btn de pedir cuando llegue a 21 o se pase
+    if (puntosJugador > 21) {
+        console.warn('Lo siento, perdiste :(');
+        btnPedir.disabled = true; // este atributo bloquea el elemento 
+        btnDetener.desabled = true;
+        turnoPC (puntosJugador);
+    } else if ( puntosJugador === 21) {
+        console.warn('Wow, 21, toca esperar al PC');
+        btnPedir.disabled = true;
+        btnDetener.desabled = true;
+        turnoPC (puntosJugador);
+
+    } 
+});
+
+// Reto: hacer el btnDetener
+btnDetener.addEventListener('click', () => {
+    btnPedir.disabled = true;
+    btnDetener.desabled = true;
+
+    turnoPC(puntosJugador);
 });

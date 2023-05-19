@@ -8,6 +8,8 @@
 let deck = [];
 const tipos = ['C', 'D', 'H', 'S'];
 const figuras = ['A', 'J', 'Q', 'K'];
+let puntosJugador = 0;
+let puntosPC = 0;
 
 const crearDeck = () => { // esta función crea la baraja de forma aleatoria
     for (let i = 2; i <= 10 ; i++) { // inicio en 2 porque la bajara empieza en el 2, los ases no son el 1 y es hasta el 10 porque a partir de ahí ya son figuras
@@ -50,15 +52,15 @@ const pedirCarta = () => {
     }
     const carta = deck.shift();
     // delete deck.carta;
-
+    return carta;
     console.log(carta);
 };
 pedirCarta();
 
 
 // const valorCarta = (carta) => {
-//     // en los strings también se pueden extraer los valores de las posiciones por tanto, para saber que valor tiene cada carta, indistintamente del palo, necesitas el número o la figura inicial
-//     // const valor = carta[0]; El problema de este modo es que en el 10 hay un problema porque son dos números iniciales 
+// en los strings también se pueden extraer los valores de las posiciones por tanto, para saber que valor tiene cada carta, indistintamente del palo, necesitas el número o la figura inicial
+// const valor = carta[0]; El problema de este modo es que en el 10 hay un problema porque son dos números iniciales 
 //     const value = carta.substring(0, carta.length - 1);// este método permite extraer ese string de la carta. O lo que se hace en este caso es partir de la posición cero y eliminar el último starting que es el palo. Por tanto, si tienes el 2C, elimina solo 'C' pero si tienes el 10C, elimina tb 'C' porque es el lenght -1
 //     let puntos = 0; // inicializar los puntos que lleva
 //     if ( isNaN( value ) ) { // el isNaN evalua si es un nombre, es decir, devolverá true si es un nombre o si no es un número
@@ -88,5 +90,12 @@ const valorCarta = ( carta ) => {
 // valorCarta2('3S');
 // no lo he conseguido, esta era mi solución, me da un string y no un número
 
+/*--------------------- */
 // Eventos
 
+btnPedir.addEventListener('click', () => { // las funciones que se encuentran en las posiciones de argumentos de otras funciones aquí se llaman Callbacks
+
+    const card = pedirCarta();
+    puntosJugador = puntosJugador + valorCarta(card);
+    console.log(puntosJugador);
+});

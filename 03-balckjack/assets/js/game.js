@@ -25,7 +25,7 @@ const crearDeck = () => { // esta función crea la baraja de forma aleatoria
     }
     // console.log(deck); // deck ordenado
     deck = _.shuffle(deck);
-    console.log(deck); // este me lo da aleatorio gracias al shuffle()
+    // console.log(deck); // este me lo da aleatorio gracias al shuffle()
     return deck;
 };
 crearDeck();
@@ -53,7 +53,6 @@ const pedirCarta = () => {
     const carta = deck.shift();
     // delete deck.carta;
     return carta;
-    console.log(carta);
 };
 pedirCarta();
 
@@ -98,4 +97,10 @@ btnPedir.addEventListener('click', () => { // las funciones que se encuentran en
     const card = pedirCarta();
     puntosJugador = puntosJugador + valorCarta(card);
     console.log(puntosJugador);
+
+    // Reto: poner el score en el small del h1 del jugador (no conseguido :'( )
+
+    // scorePlayer.innerText(puntosJugador); // No funciona
+    // scorePlayer.appendChild(puntosJugador); // No funciona
+    scorePlayer.innerHTML = puntosJugador;
 });

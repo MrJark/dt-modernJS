@@ -5,23 +5,31 @@
  * 2S -> two of spades (picas)
  */
 // Sintaxis del patrón módulo
-(() => { // función anínima autoinvocada
+const miModulo = (() => { // función anínima autoinvocada
     'use strict' // con este patrón, no puedo acceder con la consola a las variables aunque estén definidas
 
     // Para optimizar las constantes const o let si sabemos que van una debajo de otra, podemos poner solo la primera const o let y en vez de un ' ; ' para separar, una ' , ' para decirle que es otra const o let
-    let deck = [];
-    const tipos = ['C', 'D', 'H', 'S'],
+    let deck =      [];
+    const tipos =   ['C', 'D', 'H', 'S'],
           figuras = ['A', 'J', 'Q', 'K']; // optimización de const
-    // let puntosJugador = 0,
-    //     puntosPC = 0;
+
     let puntosJugadores = []; // por si tengo más de un jugador a parte del pc
 
-    // Función que inicializa el juego
-    const startGame = ( numeroJugadores = 2 ) => { // son dos jugadores como mínimo ya que está el player y el pc y el último valor es el del PC
+    // Función que inicializa el juego. Es = 2 porque mínimo son 2, el player y el pc
+    const startGame = ( numeroJugadores = 2 ) => {
         deck = crearDeck();
+        puntosJugadores = [];
         for (let i = 0; i < numeroJugadores; i++) {
             puntosJugadores.push(0);
         }
+
+        scorePC.innerHTML = 0;
+        scorePlayer.innerHTML = 0;
+
+        divCartasJugadores.forEach( elem => elem.innerHTML = '');
+
+        btnPedir.disabled = false;
+        btnDetener.disabled = false;
     }
     
     const crearDeck = () => { // esta función crea la baraja de forma aleatoria
@@ -44,7 +52,6 @@
         // console.log(deck);
         return deck ;
     };
-    // crearDeck();
     /*
     el problema es que si llamo a la función, para dar cartas, al estar ordenadas, no tendría sentido el juego por tanto para darlas aleatorias, tengo que llamar a una libreria de terceros ya que aun no se puede en js (2023) hacerlo desde aquí
     la librería es: https://underscorejs.org
@@ -89,7 +96,7 @@
     // valorCarta('QS');
     // simplificación con ternarios
 
-    const valorCarta = ( carta ) => {
+    const valorCarta = ( card ) => {
         // Reto: reducir la función valorCarta a las mínimas expresiones posibles
         // const valorCarta2 = ( carta ) => {
         //     const value = carta.substring(0, carta.length - 1);
@@ -99,7 +106,7 @@
         // }
         // valorCarta2('3S');
         // no lo he conseguido, esta era mi solución, me da un string y no un número
-        const value = carta.substring(0, carta.length -1); // sacamos el valor de la carta EN STRING
+        const value = card.substring(0, card.length -1); // sacamos el valor de la carta EN STRING
         return ( isNaN (value) ) ? // si el valor NO es un NÚMERO 
                 (value === 'A') ? 11 : 10 // si es A vale 11, las demás letras 10
                 : value * 1; // si es cualquiero cosa ≠ noun multiplicala por 1 para transformar ese valor noun a number
@@ -109,7 +116,8 @@
     const acumularPuntos = ( card, turno ) => {
 
         puntosJugadores[turno] = puntosJugadores[turno] + valorCarta(card);
-        scorePlayer.innerHTML = puntosJugadores[turno];
+        scorePlayer.innerHTML = puntosJugadores[0];
+        scorePC.innerHTML = puntosJugadores[puntosJugadores.length - 1];
         return puntosJugadores[turno];
     }
 
@@ -118,10 +126,34 @@
         cardImg.src = `assets/cards/${card}.png`;
         cardImg.classList.add('carta');
         divCartasJugadores[turno].append(cardImg);
-        // cardsPC.append(cardImg);
     }
 
-    const turnoPC = ( puntosMinimos ) => {
+    const determineWinner = () => {
+
+        const [ scorePlayer, puntosPC ] = puntosJugadores;
+
+        setTimeout(() => {
+            if ( (puntosPC > scorePlayer && puntosPC <= 21) || scorePlayer > 21) {
+                alert(`Perdiste, tus puntos son ${scorePlayer} y los del PC ${puntosPC}`);
+            } else if (scorePlayer > puntosPC || puntosPC > 21) {
+                alert(`Ganaste, tus puntos son ${scorePlayer} y los del PC ${puntosPC}`);
+            } else {
+                alert(`Empate, los puntos son ${scorePlayer}`);
+            }
+            // Código de Fernando
+            // if (puntosPC === scorePlayer) {
+            //     alert('Empate');
+            // } else if (puntosMinimos > 21) {
+            //     alert('Perdiste');
+            // } else if (puntosPC > 21) {
+            //     alert('Ganaste');
+            // } else {
+            //     alert('Perdiste');
+            // }
+        }, 100);
+    } 
+
+    const turnoPC = ( scorePlayer ) => {
         // para esta funcióbn necesito el ciclo do while porque al menos tengo que ejecutar el código una vez
         // el código es muy parecido al de btnPedir ya que tengo que crear los mismos elementos pero con una lógica distinta
         // como es un código que hemos pegado, se puede inicializar y tan solo nombrarlo para cada función
@@ -129,8 +161,8 @@
         do {    
             const card = pedirCarta();
             // puntosPC = puntosPC + valorCarta(card);
-            // scorePC.innerHTML = puntosPC;
             puntosPC = acumularPuntos(card, puntosJugadores.length - 1);
+            // scorePC.innerHTML = puntosPC;
 
             crearCarta(card, puntosJugadores.length -1);
             // const cardImg = document.createElement('img');
@@ -139,36 +171,16 @@
             // cardsPC.append(cardImg);
 
 
-            if (puntosMinimos > 21) { // esto es para que cuando el jugador se pase de 21, lo único que tiene que hacer el PC es sacar una carta para ganar y para ahí
-                break;
-            }
+            // if (scorePlayer > 21) { // esto es para que cuando el jugador se pase de 21, lo único que tiene que hacer el PC es sacar una carta para ganar y para ahí
+            //     break;
+            // }
 
-        } while ((puntosPC < puntosMinimos) && (puntosMinimos <= 21));
+        } while ((puntosPC < scorePlayer) && (scorePlayer <= 21));
 
+        determineWinner();
         // Reto: lanzar un mensaje de alerta diciendo si ganaste, perdiste o empate (no conseguido por poco, hice una cadena de ifs y lo puse en el btnPedir pero cuando lo he puesto en este, me ha ido)
         // lo he hecho de otra manera pero funciona, aunque he ido añadiendo validaciones para que funcione en todos los casos
         // Tenemos que meter los alert en una setTimeout para que no salga antes de que se muestren las cartas.
-        setTimeout(() => {
-            // if ( (puntosPC > scorePlayer && puntosPC <= 21) || scorePlayer > 21) {
-            //     alert(`Perdiste, tus puntos son ${scorePlayer} y los del PC ${puntosPC}`);
-            // } else if (scorePlayer > puntosPC || puntosPC > 21) {
-            //     alert(`Ganaste, tus puntos son ${scorePlayer} y los del PC ${puntosPC}`);
-            // } else {
-            //     alert(`Empate, los puntos son ${scorePlayer}`);
-            // }
-            // Código de Fernando
-            if (puntosPC === puntosMinimos) {
-                alert('Empate');
-            } else if (puntosMinimos > 21) {
-                alert('Perdiste');
-            } else if (puntosPC > 21) {
-                alert('Ganaste');
-            } else {
-                alert('Perdiste');
-            }
-        }, 100)
-
-
     }
 
     /*--------------------- */
@@ -196,16 +208,13 @@
 
         // Bloquear el btn de pedir cuando llegue a 21 o se pase
         if (puntosJugador > 21) {
-            console.warn('Lo siento, perdiste :(');
             btnPedir.disabled = true; // este atributo bloquea el elemento 
             btnDetener.desabled = true;
-            turnoPC (puntosJugador);
+            turnoPC(puntosJugador);
         } else if ( puntosJugador === 21) {
-            console.warn('Wow, 21, toca esperar al PC');
             btnPedir.disabled = true;
             btnDetener.disabled = true;
-            turnoPC (puntosJugador);
-
+            turnoPC(puntosJugador);
         } 
         
 
@@ -216,7 +225,7 @@
         btnPedir.disabled = true;
         btnDetener.disabled = true;
 
-        turnoPC(puntosJugadores);
+        turnoPC(puntosJugadores[0]);
     });
 
     // Reto: crear el boton 'new game' (no conseguido, queria limpiar el window con una sola linea)
@@ -238,4 +247,8 @@
         // btnDetener.disabled = false;
     });
 
+    return {
+        nuevoJuego: startGame
+    }
+    // lo que haya dentro del return es lo único que se puede mostrar
 })();

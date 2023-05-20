@@ -182,3 +182,17 @@ btnDetener.addEventListener('click', () => {
     turnoPC(puntosJugador);
 });
 
+// Reto: crear el boton 'new game' (no conseguido, queria limpiar el window con una sola linea)
+btnNewGame.addEventListener('click', () => {
+    console.clear();
+    deck = crearDeck();
+
+    puntosJugador = 0;
+    puntosPC = 0;
+
+    cardsPC.innerHTML = '';
+    cardsPlayer.innerHTML = '';
+
+    btnPedir.desabled = false;
+    btnDetener.desabled = false;
+});

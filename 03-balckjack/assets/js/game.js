@@ -191,6 +191,9 @@
         puntosJugador = 0;
         puntosPC = 0;
 
+        scorePC.innerHTML = 0;
+        scorePlayer.innerHTML = 0;
+
         cardsPC.innerHTML = '';
         cardsPlayer.innerHTML = '';
 
@@ -199,6 +202,3 @@
     });
 
 })();
-
-
-/* -------------------- */

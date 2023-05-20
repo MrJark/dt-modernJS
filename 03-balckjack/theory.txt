@@ -1,0 +1,18 @@
+
+Sintaxis del patrón módulo
+
+    Esta se inicializa arriba del código y sirve como seguridad de la página para que nadie pueda acceder a las variables desde la consola u otros modos. Su estructura es:
+
+        (() => { // función anínima autoinvocada
+
+        })();
+
+---------------------
+
+'use strict'
+
+    Con esto le decimos a js que sea estricto y nos de los elementos que no estén bien para corregirlos que no te tengamos futuros errores
+    -> Es recomendable usar este 'use strict' en los patrones módulos para evitar errores
+
+----------------------
+

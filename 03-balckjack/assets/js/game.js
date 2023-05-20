@@ -177,7 +177,7 @@ btnPedir.addEventListener('click', () => { // las funciones que se encuentran en
 // Reto: hacer el btnDetener (no conseguido)
 btnDetener.addEventListener('click', () => {
     btnPedir.disabled = true;
-    btnDetener.desabled = true;
+    btnDetener.disabled = true;
 
     turnoPC(puntosJugador);
 });
@@ -193,6 +193,6 @@ btnNewGame.addEventListener('click', () => {
     cardsPC.innerHTML = '';
     cardsPlayer.innerHTML = '';
 
-    btnPedir.desabled = false;
-    btnDetener.desabled = false;
+    btnPedir.disabled = false;
+    btnDetener.disabled = false;
 });

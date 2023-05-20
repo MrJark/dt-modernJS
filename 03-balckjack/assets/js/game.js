@@ -8,13 +8,24 @@
 (() => { // función anínima autoinvocada
     'use strict' // con este patrón, no puedo acceder con la consola a las variables aunque estén definidas
 
+    // Para optimizar las constantes const o let si sabemos que van una debajo de otra, podemos poner solo la primera const o let y en vez de un ' ; ' para separar, una ' , ' para decirle que es otra const o let
     let deck = [];
-    const tipos = ['C', 'D', 'H', 'S'];
-    const figuras = ['A', 'J', 'Q', 'K'];
-    let puntosJugador = 0;
-    let puntosPC = 0;
+    const tipos = ['C', 'D', 'H', 'S'],
+          figuras = ['A', 'J', 'Q', 'K']; // optimización de const
+    // let puntosJugador = 0,
+    //     puntosPC = 0;
+    let puntosJugadores = []; // por si tengo más de un jugador a parte del pc
 
+    // Función que inicializa el juego
+    const startGame = ( numeroJugadores = 2 ) => { // son dos jugadores como mínimo ya que está el player y el pc y el último valor es el del PC
+        deck = crearDeck();
+        for (let i = 0; i < numeroJugadores; i++) {
+            puntosJugadores.push(0);
+        }
+    }
+    
     const crearDeck = () => { // esta función crea la baraja de forma aleatoria
+        
         for (let i = 2; i <= 10 ; i++) { // inicio en 2 porque la bajara empieza en el 2, los ases no son el 1 y es hasta el 10 porque a partir de ahí ya son figuras
             // deck.push(i);
             for (let tipo of tipos) { // a cada número de cartas anterior le estoy añadiendo el tipo con ciclo for of
@@ -27,11 +38,13 @@
             }
         }
         // console.log(deck); // deck ordenado
-        deck = _.shuffle(deck);
+        // deck = _.shuffle(deck);
         // console.log(deck); // este me lo da aleatorio gracias al shuffle()
-        return deck;
+        deck = _.shuffle(deck);
+        // console.log(deck);
+        return deck ;
     };
-    crearDeck();
+    // crearDeck();
     /*
     el problema es que si llamo a la función, para dar cartas, al estar ordenadas, no tendría sentido el juego por tanto para darlas aleatorias, tengo que llamar a una libreria de terceros ya que aun no se puede en js (2023) hacerlo desde aquí
     la librería es: https://underscorejs.org
@@ -53,11 +66,12 @@
         if ( deck.length === 0) {
             throw 'No quedan cartas en el deck'
         }
-        const carta = deck.shift();
-        // delete deck.carta;
-        return carta;
+        // const carta = deck.shift();
+        // return carta;
+        // no tenia sentido el crear carta = deck.shift(); porque con solo retornar deck.shift() me sobra y ahorro espacio
+        return deck.shift();
     };
-    pedirCarta();
+    // pedirCarta();
 
     // const valorCarta = (carta) => {
     // en los strings también se pueden extraer los valores de las posiciones por tanto, para saber que valor tiene cada carta, indistintamente del palo, necesitas el número o la figura inicial
@@ -91,20 +105,39 @@
                 : value * 1; // si es cualquiero cosa ≠ noun multiplicala por 1 para transformar ese valor noun a number
     };
 
+    // Turnos: 0 = primer jugador ... último = pc
+    const acumularPuntos = ( card, turno ) => {
+
+        puntosJugadores[turno] = puntosJugadores[turno] + valorCarta(card);
+        scorePlayer.innerHTML = puntosJugadores[turno];
+        return puntosJugadores[turno];
+    }
+
+    const crearCarta = ( card, turno) => {
+        const cardImg = document.createElement('img');
+        cardImg.src = `assets/cards/${card}.png`;
+        cardImg.classList.add('carta');
+        divCartasJugadores[turno].append(cardImg);
+        // cardsPC.append(cardImg);
+    }
+
     const turnoPC = ( puntosMinimos ) => {
         // para esta funcióbn necesito el ciclo do while porque al menos tengo que ejecutar el código una vez
         // el código es muy parecido al de btnPedir ya que tengo que crear los mismos elementos pero con una lógica distinta
         // como es un código que hemos pegado, se puede inicializar y tan solo nombrarlo para cada función
+        let puntosPC = 0;
         do {    
             const card = pedirCarta();
-            puntosPC = puntosPC + valorCarta(card);
-            scorePC.innerHTML = puntosPC;
+            // puntosPC = puntosPC + valorCarta(card);
+            // scorePC.innerHTML = puntosPC;
+            puntosPC = acumularPuntos(card, puntosJugadores.length - 1);
 
-            const cardImg = document.createElement('img');
-            cardImg.src = `assets/cards/${card}.png`;
-            cardImg.classList.add('carta');
+            crearCarta(card, puntosJugadores.length -1);
+            // const cardImg = document.createElement('img');
+            // cardImg.src = `assets/cards/${card}.png`;
+            // cardImg.classList.add('carta');
+            // cardsPC.append(cardImg);
 
-            cardsPC.append(cardImg);
 
             if (puntosMinimos > 21) { // esto es para que cuando el jugador se pase de 21, lo único que tiene que hacer el PC es sacar una carta para ganar y para ahí
                 break;
@@ -116,21 +149,23 @@
         // lo he hecho de otra manera pero funciona, aunque he ido añadiendo validaciones para que funcione en todos los casos
         // Tenemos que meter los alert en una setTimeout para que no salga antes de que se muestren las cartas.
         setTimeout(() => {
-            if ( (puntosPC > puntosJugador && puntosPC <= 21) || puntosJugador > 21) {
-                alert(`Perdiste, tus puntos son ${puntosJugador} y los del PC ${puntosPC}`);
-            } else if (puntosJugador > puntosPC || puntosPC > 21) {
-                alert(`Ganaste, tus puntos son ${puntosJugador} y los del PC ${puntosPC}`);
-            } else {
-                alert(`Empate, los puntos son ${puntosJugador}`);
-            }
-            // Código de Fernando
-            // if (puntosPC === puntosMinimos) {
-            //     alert('Empate');
-            // } else if (puntosMinimos > 21) {
-            //     alert('Perdiste');
-            // } else if (puntosPC > 21) {
-            //     alert('Ganaste');
+            // if ( (puntosPC > scorePlayer && puntosPC <= 21) || scorePlayer > 21) {
+            //     alert(`Perdiste, tus puntos son ${scorePlayer} y los del PC ${puntosPC}`);
+            // } else if (scorePlayer > puntosPC || puntosPC > 21) {
+            //     alert(`Ganaste, tus puntos son ${scorePlayer} y los del PC ${puntosPC}`);
+            // } else {
+            //     alert(`Empate, los puntos son ${scorePlayer}`);
             // }
+            // Código de Fernando
+            if (puntosPC === puntosMinimos) {
+                alert('Empate');
+            } else if (puntosMinimos > 21) {
+                alert('Perdiste');
+            } else if (puntosPC > 21) {
+                alert('Ganaste');
+            } else {
+                alert('Perdiste');
+            }
         }, 100)
 
 
@@ -142,21 +177,22 @@
     btnPedir.addEventListener('click', () => { // las funciones que se encuentran en las posiciones de argumentos de otras funciones aquí se llaman Callbacks
 
         const card = pedirCarta();
-        puntosJugador = puntosJugador + valorCarta(card);
-        console.log(puntosJugador);
+        const puntosJugador = acumularPuntos(card, 0); // pongo el 0 porque es el jugador 1
+        // puntosJugador = puntosJugador + valorCarta(card);
+        // scorePlayer.innerHTML = puntosJugador;
+        crearCarta(card, 0);
 
         // Reto: poner el score en el small del h1 del jugador (no conseguido :'( )
 
         // scorePlayer.innerText(puntosJugador); // No funciona
         // scorePlayer.appendChild(puntosJugador); // No funciona
-        scorePlayer.innerHTML = puntosJugador;
 
         // Creamos ahora las imágenes de las cartas que salgan
-        const cardImg = document.createElement('img');
-        cardImg.src = `assets/cards/${card}.png`; // para crear el src de la carta y que exista
-        cardImg.classList.add('carta'); //añado el style de la carta
+        // const cardImg = document.createElement('img');
+        // cardImg.src = `assets/cards/${card}.png`; // para crear el src de la carta y que exista
+        // cardImg.classList.add('carta'); //añado el style de la carta
+        // cardsPlayer.append(cardImg);
 
-        cardsPlayer.append(cardImg);
 
         // Bloquear el btn de pedir cuando llegue a 21 o se pase
         if (puntosJugador > 21) {
@@ -167,7 +203,7 @@
         } else if ( puntosJugador === 21) {
             console.warn('Wow, 21, toca esperar al PC');
             btnPedir.disabled = true;
-            btnDetener.desabled = true;
+            btnDetener.disabled = true;
             turnoPC (puntosJugador);
 
         } 
@@ -180,25 +216,26 @@
         btnPedir.disabled = true;
         btnDetener.disabled = true;
 
-        turnoPC(puntosJugador);
+        turnoPC(puntosJugadores);
     });
 
     // Reto: crear el boton 'new game' (no conseguido, queria limpiar el window con una sola linea)
     btnNewGame.addEventListener('click', () => {
-        console.clear();
-        deck = crearDeck();
+        startGame();
 
-        puntosJugador = 0;
-        puntosPC = 0;
+        // console.clear();
+        // deck = crearDeck();
+        // puntosJugador = 0;
+        // puntosPC = 0;
 
-        scorePC.innerHTML = 0;
-        scorePlayer.innerHTML = 0;
+        // scorePC.innerHTML = 0;
+        // scorePlayer.innerHTML = 0;
 
-        cardsPC.innerHTML = '';
-        cardsPlayer.innerHTML = '';
+        // cardsPC.innerHTML = '';
+        // cardsPlayer.innerHTML = '';
 
-        btnPedir.disabled = false;
-        btnDetener.disabled = false;
+        // btnPedir.disabled = false;
+        // btnDetener.disabled = false;
     });
 
 })();

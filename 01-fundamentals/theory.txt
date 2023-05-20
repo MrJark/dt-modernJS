@@ -103,3 +103,13 @@ Funciones
 
     Buenas prácticas: colocarlas al inicio del file
     Si una función no tiene un 'return' explícito, devuelve undefined
+
+-----------------------------
+
+Clases
+
+    Para hacer referencias a las clases estando dentro de estas usamos la palabra reservada:
+
+        this.
+    
+    Todas las clases en js vienen por defecto con el 'use strict'

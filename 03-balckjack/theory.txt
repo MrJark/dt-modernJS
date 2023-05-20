@@ -16,3 +16,8 @@ Sintaxis del patrón módulo
 
 ----------------------
 
+MINIFY
+
+    Cuanto más dificil sea de averiguar el código,más seguro será por tanto, para ello se tiene qeu minimizar y esto lo hace el siguiente enlace:
+        https://www.toptal.com/developers/javascript-minifier
+    Esta minimización es para el deploy, para trabajar nosotros con los archivos, es imposible, por eso tenemos dos copias. El -min.js que es el del lado del server y el .js normal que es el del lado del desarrollador

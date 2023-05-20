@@ -109,6 +109,29 @@ const turnoPC = ( puntosMinimos ) => {
         }
 
     } while ((puntosPC < puntosMinimos) && (puntosMinimos <= 21));
+
+    // Reto: lanzar un mensaje de alerta diciendo si ganaste, perdiste o empate (no conseguido por poco, hice una cadena de ifs y lo puse en el btnPedir pero cuando lo he puesto en este, me ha ido)
+    // lo he hecho de otra manera pero funciona, aunque he ido añadiendo validaciones para que funcione en todos los casos
+    // Tenemos que meter los alert en una setTimeout para que no salga antes de que se muestren las cartas.
+    setTimeout(() => {
+        if ( (puntosPC > puntosJugador && puntosPC <= 21) || puntosJugador > 21) {
+            alert(`Perdiste, tus puntos son ${puntosJugador} y los del PC ${puntosPC}`);
+        } else if (puntosJugador > puntosPC || puntosPC > 21) {
+            alert(`Ganaste, tus puntos son ${puntosJugador} y los del PC ${puntosPC}`);
+        } else {
+            alert(`Empate, los puntos son ${puntosJugador}`);
+        }
+        // Código de Fernando
+        // if (puntosPC === puntosMinimos) {
+        //     alert('Empate');
+        // } else if (puntosMinimos > 21) {
+        //     alert('Perdiste');
+        // } else if (puntosPC > 21) {
+        //     alert('Ganaste');
+        // }
+    }, 100)
+
+
 }
 
 /*--------------------- */
@@ -147,12 +170,15 @@ btnPedir.addEventListener('click', () => { // las funciones que se encuentran en
         turnoPC (puntosJugador);
 
     } 
+    
+
 });
 
-// Reto: hacer el btnDetener
+// Reto: hacer el btnDetener (no conseguido)
 btnDetener.addEventListener('click', () => {
     btnPedir.disabled = true;
     btnDetener.desabled = true;
 
     turnoPC(puntosJugador);
 });
+

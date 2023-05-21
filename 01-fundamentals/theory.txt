@@ -131,3 +131,9 @@ Clases
             + sets -> establecer valores
             + gets -> obtener valores
         5º - propiedaes privadas
+
+    Dentro de las clases hay una propiedad llamada extends que permite tranferir los métodos de una clase a otra nuevo sin tener que copiar todo el código, su sintaxis es:
+
+        const NewClase extends Clase {
+            'Añadir nuevos métodos de la nueva clase'
+        };

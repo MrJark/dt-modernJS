@@ -14,7 +14,18 @@ class Persona {
         this.codigo = codigo;
         this.frase = frase;
     }
+
+    // creación de métodos y se hacen debajo del constructor
+    quienSoy() {
+        console.log(`Soy ${this.nombre} y mi identidad es ${this.codigo}`);
+    }
+    miFrase() {
+        console.log(`${this.frase}`);
+    }
 }
 
 // a esta new Persona tengo que añadirle entre paréntesis tanto el nombre, como el código como la frase. Todo entre '' y separados por comas y EN EL ORDEN INDICADO
-const spiderman = new Persona(); 
+const ironman = new Persona('Tony Stark', 'Iron Man', 'Yo soy Iron Man'); 
+
+ironman.quienSoy();
+ironman.miFrase();

@@ -137,3 +137,5 @@ Clases
         const NewClase extends Clase {
             'Añadir nuevos métodos de la nueva clase'
         };
+
+(La página canIuse, https://caniuse.com/?search=%23, permite saber que propiedades soportan los navegadores)

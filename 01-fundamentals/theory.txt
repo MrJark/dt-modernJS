@@ -113,3 +113,11 @@ Clases
         this.
     
     Todas las clases en js vienen por defecto con el 'use strict'
+    Todas las clases, su nombre, deben empezar con mayuscula, no es obligado pero es buena practica
+    Las nuevas instancias de las clases que creamos se crean a partir de la palabra reservada ' new '. Ejmp:
+
+        const antonia = new Persona();
+
+    Métodos y propiedades básicas de las clases:
+
+        constructor() {} -> es un método que se ejecuta justo cuando se inicializa una instancia de la clases y es el único que no returna undefined siempre retorna la instancia del objeto

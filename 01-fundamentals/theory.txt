@@ -121,3 +121,13 @@ Clases
     Métodos y propiedades básicas de las clases:
 
         constructor() {} -> es un método que se ejecuta justo cuando se inicializa una instancia de la clases y es el único que no returna undefined siempre retorna la instancia del objeto
+
+    Distribución de las inicializaciones dentro de las clases:
+
+        1º - Propiedades y métrodos estáticos
+        2º - Propiedades de la clase
+        2º - constructor
+        4º - sets y gets 
+            + sets -> establecer valores
+            + gets -> obtener valores
+        5º - propiedaes privadas

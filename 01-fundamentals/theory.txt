@@ -139,3 +139,9 @@ Clases
         };
 
 (La página canIuse, https://caniuse.com/?search=%23, permite saber que propiedades soportan los navegadores)
+
+-----------------------
+
+Sigleton
+
+    Es una instancia única de mi clase. Esto es muy útil  para bases de datos

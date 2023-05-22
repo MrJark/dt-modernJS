@@ -39,3 +39,6 @@ const instancia2 = new NombreCualquiera('hulk');
 
 console.log(`El nombre de la instancia 1 es: ${instancia1.nombre}`);
 console.log(`El nombre de la instancia 1 es: ${instancia2.nombre}`);
+/**
+ * Estop es útil cuando quiero hacer siempre una cosa en específico pero llamarla muchas veces
+ */

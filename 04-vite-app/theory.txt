@@ -1,0 +1,15 @@
+
+Despliegue de app
+
+Los distintos comandos para usar npm en el directorio que nos haga fata:
+
+    - npm run dev -> sirve para correr la aplicación que hemos hecho en un servidor local
+    - npm run build -> sirve para que nos cree una carpeta con los archivos que tenemos que subir al servidor. En esta está todo lo necesario pero comprimido para que sea rápido de descargar
+
+-----------
+
+He usado netlify para hacer el deploy del dist (es el archivo minimizado creado por el npm run build, el archivo que se tiene que hacer deploy) y tenerlo en la nuve.
+
+    Link: https://devtalles-app.netlify.app 
+
+-----------

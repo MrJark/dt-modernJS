@@ -13,3 +13,5 @@ He usado netlify para hacer el deploy del dist (es el archivo minimizado creado 
     Link: https://devtalles-app.netlify.app 
 
 -----------
+
+Cuando vamos a hacer el npm run build, si tenemos elementos estáticos como es en este caso los assets de las cartas, para que haga el build de esos assets tenemos que ponerlos en la carpeta public (en vite funciona así)

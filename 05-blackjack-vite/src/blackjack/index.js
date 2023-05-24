@@ -1,7 +1,6 @@
 import _ from 'underscore';
-import { crearDeck } from './usescases/create-deck'
-import { pedirCarta } from './usescases/order-card';
-import { valorCarta } from './usescases/value-card'
+
+import { crearDeck, pedirCarta, valorCarta } from './usescases'; // con una sola línea hemos simplificado todo el index
 
 
 const miModulo = (() => { 

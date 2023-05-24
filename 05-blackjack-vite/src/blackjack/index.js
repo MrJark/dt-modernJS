@@ -12,7 +12,7 @@ const miModulo = (() => {
     let puntosJugadores = []; 
 
     const startGame = ( numeroJugadores = 2 ) => {
-      deck = crearDeck();
+      deck = crearDeck(tipos, figuras);
       puntosJugadores = [];
       for (let i = 0; i < numeroJugadores; i++) {
           puntosJugadores.push(0);
@@ -27,7 +27,7 @@ const miModulo = (() => {
       btnDetener.disabled = false;
     };
 
-    crearDeck();
+    deck = crearDeck(tipos, figuras);
 
     const pedirCarta = () => {
 

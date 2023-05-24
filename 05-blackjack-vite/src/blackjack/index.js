@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import { crearDeck } from './usescases/create-deck'
 import { pedirCarta } from './usescases/order-card';
-
+import { valorCarta } from './usescases/value-card'
 
 
 const miModulo = (() => { 
@@ -29,16 +29,6 @@ const miModulo = (() => {
     };
 
     deck = crearDeck(tipos, figuras);
-
-
-
-    const valorCarta = ( card ) => {
-  
-      const value = card.substring(0, card.length -1);
-      return ( isNaN (value) ) ?
-              (value === 'A') ? 11 : 10 
-              : value * 1;
-    };
 
     const acumularPuntos = ( card, turno ) => {
 

@@ -1,5 +1,6 @@
 import _ from 'underscore';
 import { crearDeck } from './usescases/create-deck'
+import { pedirCarta } from './usescases/order-card';
 
 
 
@@ -29,13 +30,6 @@ const miModulo = (() => {
 
     deck = crearDeck(tipos, figuras);
 
-    const pedirCarta = () => {
-
-      if ( deck.length === 0) {
-          throw 'No quedan cartas en el deck'
-      }
-      return deck.shift();
-    };
 
 
     const valorCarta = ( card ) => {
@@ -80,7 +74,7 @@ const miModulo = (() => {
       
       let puntosPC = 0;
       do {    
-          const card = pedirCarta();
+          const card = pedirCarta( deck );
           puntosPC = acumularPuntos(card, puntosJugadores.length - 1);
 
           crearCarta(card, puntosJugadores.length -1);
@@ -92,7 +86,7 @@ const miModulo = (() => {
     };
 
     btnPedir.addEventListener('click', () => { 
-      const card = pedirCarta();
+      const card = pedirCarta( deck );
       const puntosJugador = acumularPuntos(card, 0); 
       crearCarta(card, 0);
 

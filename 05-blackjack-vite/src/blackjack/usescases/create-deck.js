@@ -14,6 +14,7 @@ El tipo de comentarios de abajo, genera una ruta visual para otras personas que 
  * @returns {array} retorna un nuevo deck
  */
 
+
 export const crearDeck = (tiposDeCartas, figurasEspeciales) => {
     
     if( !tiposDeCartas || tiposDeCartas.lenght === 0) throw new Error('tiposDeCartas es obligatorio como array de strings!')
@@ -32,5 +33,6 @@ export const crearDeck = (tiposDeCartas, figurasEspeciales) => {
         }
     }
     deck = _.shuffle(deck);
+    console.log(deck);
     return deck ;
 };

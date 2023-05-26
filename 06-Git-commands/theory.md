@@ -1,6 +1,7 @@
 # Comandos útiles de Git
 
     1. git init -> inicializa el repositorio/directorio 
+    
     2. git add . -> prepara todos los archivvos creados de nuevo desde el git init para la "fotografía", el "commit". Sube todos los elementos a un stage
     3. git reset . -> revierte lo que habíaos hecho con el " git add . " 
     4. git commit -m -> sirve para hacer esa "fotografía" y dejarle un mensaje con ella para saber que es ese commit

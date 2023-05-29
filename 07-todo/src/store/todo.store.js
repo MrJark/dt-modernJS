@@ -65,9 +65,16 @@ const addTodo = ( description ) => {
 /**
  * 
  * @param {string} todoId : Todo identify
+ * Cambio de estado entre done y !done con el parámetro id
  */
 const toggleTodo = (todoId) => {
-    throw new Error('No implemented yet');
+    
+    state.todos = state.todos.map( todo => { // el método map barre todo el arreglo, más sencillo que cualquier ciclo ese más eficiente con pocos elementos pero si tienes 1k, se hace pesado y no es el más indicado
+        if (todo.id == todoId) {
+            todo.done = !todo.done;
+        }
+        return todo; // siempre tienes que regresar la instancia 
+    });
 };
 
 /**

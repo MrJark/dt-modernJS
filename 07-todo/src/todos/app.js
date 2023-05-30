@@ -5,7 +5,7 @@ import { renderTodos } from './use-cases';
 
 // Función para llamra los distintos ids y classes del app.html y que no hayan strings porque es muy volátil. Si en cambian los ids o classses y los tenes en muchas funciones, puede fallar la app si no los quitas, sin embargo, si los tienes todos en una misma fucnión, solo tienes que cambiarlos cada uno, una sola vez
 const ElementsIds = {
-    TodoList: '.todo-list',
+    TodoList: '.todo-list', // lista donde creo todos los todos
     NewTodoInput: '#new-todo-input',
 
 };
@@ -33,6 +33,7 @@ export const App = ( elementId ) => {
     // Referencias HTML ( las hacemos aquí abajo porque hasta que no esté todo renderizado estas no existen )
     
     const newDescriptionInput = document.querySelector( ElementsIds.NewTodoInput );
+    const todoListUl = document.querySelector( ElementsIds.TodoList );
 
 
     // Listeners
@@ -48,6 +49,15 @@ export const App = ( elementId ) => {
         event.target.value = ''; // para limpiar la caja de eventos cuando lo hemos mandado
         displayTodos();
 
+    });
+
+    todoListUl.addEventListener('click', ( event ) => {
+        const element = event.target.closest('[data-id]'); 
+        console.log( element.getAttribute('data-id'));
+        // el método closest() permite extraer el elemento que indiquemos del padre más cencano, en este caso queremos el data-id que es donde se renderiza el id del todo
+        // todoStore.toggleTodo( element.getAttribute('data-id') ); 
+        // con esto conseguimos extaer el id específico del todo
+        // displayTodos();
     });
 
 }

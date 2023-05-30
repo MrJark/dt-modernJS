@@ -17,7 +17,7 @@ export const App = ( elementId ) => {
     const displayTodos = () => { // el encargado de "redibujar" los todos
         const todos = todoStore.getTodos( todoStore.getCurrentFilter() );
         // console.log(todos);
-        renderTodos( elementId.TodoList, todos ); // llamo al id donde quiero que se renderice y lo que quiero que se renderice, los todos 
+        renderTodos( ElementsIds.TodoList, todos ); // llamo al id donde quiero que se renderice y lo que quiero que se renderice, los todos 
     }
 
     // Función autoinvocada  para cuando se llama a App

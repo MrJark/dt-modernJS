@@ -7,6 +7,7 @@ import { renderTodos } from './use-cases';
 const ElementsIds = {
     TodoList: '.todo-list', // lista donde creo todos los todos
     NewTodoInput: '#new-todo-input',
+    DestroyTodo: '.destroy',
 
 };
 
@@ -34,6 +35,7 @@ export const App = ( elementId ) => {
     
     const newDescriptionInput = document.querySelector( ElementsIds.NewTodoInput );
     const todoListUl = document.querySelector( ElementsIds.TodoList );
+    // const destroyTodoListUl = document.querySelector( ElementsIds.DestroyTodo ); // no hacia falta
 
 
     // Listeners
@@ -52,13 +54,40 @@ export const App = ( elementId ) => {
     });
 
     todoListUl.addEventListener('click', ( event ) => {
-        const element = event.target.closest('[data-id]'); 
-        console.log( element );
+        const element = event.target.closest('[data-id]'); // los corchetes son necesarios
+        // console.log( element );
         // el método closest() permite extraer el elemento que indiquemos del padre más cencano, en este caso queremos el data-id que es donde se renderiza el id del todo
         todoStore.toggleTodo( element.getAttribute('data-id') ); 
         // con esto conseguimos extaer el id específico del todo
         
         displayTodos();
     });
+
+    // Tarea: dar funcionalidad al boton eliminar todo (no conseguido después de 30 minutos)
+
+    todoListUl.addEventListener('click', ( event ) => {
+
+        const isDestroy = event.target.className === 'destroy';
+        const element = event.target.closest('[data-id]'); // tb debemos tener esta const
+        console.log({isDestroy});
+
+        if ( !element || ! isDestroy ) return; // si no son, no debe hacer nada
+
+        todoStore.deleteTodo( element.getAttribute('data-id') );
+        displayTodos();
+
+        // console.log(event.target.closest('destroy') ? 'cool' : 'fuck');
+        // const destroy = event.targer.button.getElementByClassName('destroy')
+        // console.log(destroy);
+        
+        // console.log(event.target);
+        // const destroy = event.target.getElementByClassName('destroy');
+        // console.log( event.target.getAttribute('destroy') ? 'cool' : 'fuck' );
+        
+        // DestroyTodo.DestroyTodo( destroy.getAttribute('destroy') );
+        
+
+    });
+
 
 }

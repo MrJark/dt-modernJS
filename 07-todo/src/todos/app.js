@@ -30,7 +30,7 @@ export const App = ( elementId ) => {
         displayTodos();
     })();
 
-    // Referencias HTML ( las hacemos aquí abajo porque hasta que no esté todo renderizado estas no existen )
+    // Referencias HTML ( las hacemos aquí abajo porque hasta que no esté todo renderizado, no existen )
     
     const newDescriptionInput = document.querySelector( ElementsIds.NewTodoInput );
     const todoListUl = document.querySelector( ElementsIds.TodoList );
@@ -39,25 +39,26 @@ export const App = ( elementId ) => {
     // Listeners
 
     newDescriptionInput.addEventListener('keyup', ( event ) => {
-        console.log(event);
+        // console.log(event);
         if ( event.keyCode !== 13 ) return;
         // Los KeyCode son los códigos únicos de cada una de las teclas del teclado, el 13 es la de la tecla " enter " por tanto, cuando se pulse, se habrá creado una una descripción de tarea
         
         if ( event.target.value.trim().length === 0) return; 
         // .trim() elimina todos los espacios vacios por tanto, esto queire decir que si el evento, quitando todos los espacios es 0, es decir, o se ha escrito nada, no se haga nada porque no queremos tareas vacias
         todoStore.addTodo( event.target.value );
-        event.target.value = ''; // para limpiar la caja de eventos cuando lo hemos mandado
         displayTodos();
+        event.target.value = ''; // para limpiar la caja de eventos cuando lo hemos mandado
 
     });
 
     todoListUl.addEventListener('click', ( event ) => {
         const element = event.target.closest('[data-id]'); 
-        console.log( element.getAttribute('data-id'));
+        console.log( element );
         // el método closest() permite extraer el elemento que indiquemos del padre más cencano, en este caso queremos el data-id que es donde se renderiza el id del todo
-        // todoStore.toggleTodo( element.getAttribute('data-id') ); 
+        todoStore.toggleTodo( element.getAttribute('data-id') ); 
         // con esto conseguimos extaer el id específico del todo
-        // displayTodos();
+        
+        displayTodos();
     });
 
 }

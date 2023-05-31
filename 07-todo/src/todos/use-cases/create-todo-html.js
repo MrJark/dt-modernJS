@@ -34,7 +34,7 @@ export const createTodoHTML = ( todo ) => {
     */
     const liElement = document.createElement('li');
     liElement.innerHTML = html;
-    liElement.getAttribute('data-id', id); // le damos la clase data-id para identificarlo
+    liElement.setAttribute('data-id', id); // le damos la clase data-id para identificarlo
     todo.done ? liElement.classList.add('completed') : '';
     // liElement.classList.add('completed'); // solo si todo.done == true
 

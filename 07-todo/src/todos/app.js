@@ -2,12 +2,13 @@
 import html from './app.html?raw'
 import todoStore from '../store/todo.store';
 import { renderTodos } from './use-cases';
+import { Todo } from './models/todo.models';
 
 // Función para llamra los distintos ids y classes del app.html y que no hayan strings porque es muy volátil. Si en cambian los ids o classses y los tenes en muchas funciones, puede fallar la app si no los quitas, sin embargo, si los tienes todos en una misma fucnión, solo tienes que cambiarlos cada uno, una sola vez
 const ElementsIds = {
-    TodoList: '.todo-list', // lista donde creo todos los todos
-    NewTodoInput: '#new-todo-input',
-    DestroyTodo: '.destroy',
+    TodoList: '.todo-list', // lista donde se crean todos los todos
+    NewTodoInput: '#new-todo-input', // input donde escribir el nuevo todo
+    ClearCompleted: '.clear-completed', // boton de limpiar los todos completed
 
 };
 
@@ -35,7 +36,7 @@ export const App = ( elementId ) => {
     
     const newDescriptionInput = document.querySelector( ElementsIds.NewTodoInput );
     const todoListUl = document.querySelector( ElementsIds.TodoList );
-    // const destroyTodoListUl = document.querySelector( ElementsIds.DestroyTodo ); // no hacia falta
+    const btnDeleteCompleted = document.querySelector( ElementsIds.ClearCompleted ); 
 
 
     // Listeners
@@ -63,13 +64,13 @@ export const App = ( elementId ) => {
         displayTodos();
     });
 
-    // Tarea: dar funcionalidad al boton eliminar todo (no conseguido después de 30 minutos)
+    // Reto: dar funcionalidad al boton eliminar todo (no conseguido después de 30 minutos)
 
     todoListUl.addEventListener('click', ( event ) => {
 
         const isDestroy = event.target.className === 'destroy';
         const element = event.target.closest('[data-id]'); // tb debemos tener esta const
-        console.log({isDestroy});
+        // console.log({isDestroy});
 
         if ( !element || ! isDestroy ) return; // si no son, no debe hacer nada
 
@@ -86,7 +87,18 @@ export const App = ( elementId ) => {
         
         // DestroyTodo.DestroyTodo( destroy.getAttribute('destroy') );
         
+    });
 
+    // Reto: crear un listener con la funcionalidad de Borrar los completados
+
+    btnDeleteCompleted.addEventListener('click', ( event ) => {
+
+        const element = event.target.closest('[data-id]');
+        const isComplete = event.target.className 
+        
+        todoStore.toggleTodo( element.getAttribute('data-id') );
+
+        // deleteCompleted();
     });
 
 

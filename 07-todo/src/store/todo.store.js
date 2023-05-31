@@ -118,7 +118,7 @@ const deleteTodo = (todoId) => {
  * Asigna 'completed' a un todo gracias a su id
  * @param {string} todoId : Todo identify
  */
-const deleteCompleted = (todoId) => {
+const deleteCompleted = () => {
     // throw new Error('No implemented yet');
     state.todos = state.todos.filter( todo => todo.done ); 
     // Parecido al delete pero tiene que aquellos todos que no tengan la propiedad done

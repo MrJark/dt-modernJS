@@ -1,6 +1,6 @@
 import { Todo } from "../todos/models/todo.models";
 
-const Filters = {
+export const Filters = {
     All: 'all',
     Completed: 'Completed',
     Pending: 'Pending',
@@ -120,7 +120,7 @@ const deleteTodo = (todoId) => {
  */
 const deleteCompleted = () => {
     // throw new Error('No implemented yet');
-    state.todos = state.todos.filter( todo => todo.done ); 
+    state.todos = state.todos.filter( todo => !todo.done ); 
     // Parecido al delete pero tiene que aquellos todos que no tengan la propiedad done
 
     saveInLocal();

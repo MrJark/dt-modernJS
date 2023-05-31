@@ -1,6 +1,6 @@
 // da error si no pones ' ?raw ' porque está esperando un módulo de js y no un html. Lo bueno de vite es que poniendo ?raw se soluciona
 import html from './app.html?raw'
-import todoStore from '../store/todo.store';
+import todoStore, {Filters} from '../store/todo.store';
 import { renderTodos } from './use-cases';
 import { Todo } from './models/todo.models';
 
@@ -9,6 +9,7 @@ const ElementsIds = {
     TodoList: '.todo-list', // lista donde se crean todos los todos
     NewTodoInput: '#new-todo-input', // input donde escribir el nuevo todo
     ClearCompleted: '.clear-completed', // boton de limpiar los todos completed
+    TodoFilters: '.filtro',
 
 };
 
@@ -36,7 +37,8 @@ export const App = ( elementId ) => {
     
     const newDescriptionInput = document.querySelector( ElementsIds.NewTodoInput );
     const todoListUl = document.querySelector( ElementsIds.TodoList );
-    const btnDeleteCompleted = document.querySelector( ElementsIds.ClearCompleted ); 
+    const btnDeleteCompleted = document.querySelector( ElementsIds.ClearCompleted );
+    const filtersLIs = document.querySelectorAll( ElementsIds.TodoFilters );
 
 
     // Listeners
@@ -89,17 +91,44 @@ export const App = ( elementId ) => {
         
     });
 
-    // Reto: crear un listener con la funcionalidad de Borrar los completados
+    // Reto: crear un listener con la funcionalidad de Borrar los completados (no conseguido)
 
-    btnDeleteCompleted.addEventListener('click', ( event ) => {
+    btnDeleteCompleted.addEventListener('click', () => {
 
-        const element = event.target.closest('[data-id]');
-        const isComplete = event.target.className 
+        todoStore.deleteCompleted();
+        displayTodos();
+
+        // const element = event.target.closest('[data-id]');
+        // const isComplete = event.target.className === ''
         
-        todoStore.toggleTodo( element.getAttribute('data-id') );
+        // todoStore.toggleTodo( element.getAttribute('data-id') );
 
-        // deleteCompleted();
+        // // deleteCompleted();
+        // displayTodos();
+
     });
 
+    filtersLIs.forEach( element => { // no es un addEventListener porque es un arreglo ya que tiene diferentes elementos, los botones
+        
+        element.addEventListener('click', ( element ) => { // el elemento es el que tiene que tener el addEventListener
+        
+            filtersLIs.forEach( el => el.classList.remove('selected'));
+            element.target.classList.add('selected');
+        
+            switch ( element.target.text ){
+                case 'Todos':
+                    todoStore.setFilter( Filters.All )
+                break;
+                case 'Pendientes':
+                    todoStore.setFilter( Filters.Pending )
+                break;
+                case 'Completados':
+                    todoStore.setFilter( Filters.Completed )
+                break;
+            }
+            displayTodos();
+
+        });
+    });
 
 }

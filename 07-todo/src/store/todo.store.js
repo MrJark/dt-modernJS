@@ -21,12 +21,31 @@ const state  = {
 // Funciones que necesitas para crear la aplicación de TODOS
 
 const initStore = () => {
-    console.log(state);
+    loadStore();
     console.log('InitStore🍍');
 };
 
 const loadStore = () => {
-    throw new Error('No implemented yet');
+    // throw new Error('No implemented yet');
+    if ( !localStorage.getItem('state') ) return; // si no hay nada en local, no devuelve nada
+    
+    const { todos = [], filter = Filters.All } = JSON.parse( localStorage.getItem('state') );
+    /*
+    Se hace una desestructuración porque daría error sino. Le decimos que nos de los todos y los filters, que es justo lo que hay en el state y sino hay,
+    ponga por defecto el todos como vacio y el Filters como All
+    Además, como local storage se guarda en string, tenemos que hacer el .parse para transformarlo
+    Y ahora llamamos al todos y filters del state
+    */
+   state.todos = todos;
+   state.filter = filter;
+
+};
+
+const saveInLocal = () => {
+    // hay que mandar a llamar esta función cada vez que hagamos algo con los todos ya que es donde se guarda todo
+
+    localStorage.setItem('state', JSON.stringify(state) ); // guarda en local storage la constante state y como solo guarda strings, le hacemos el JSON.stringify para que lo convierta a string
+
 };
 
 /**
@@ -50,6 +69,8 @@ const getTodos = ( filter = Filters.All ) => {
         default:
             throw new Error(`El filtro ${ filter } no es valido`);
     };
+
+    saveInLocal();
 };
 
 /**
@@ -60,6 +81,8 @@ const addTodo = ( description ) => {
     // throw new Error('No implemented yet');
     if ( !description ) throw new Error('Description is required');
     state.todos.push( new Todo(description));
+
+    saveInLocal();
 };
 
 /**
@@ -75,6 +98,8 @@ const toggleTodo = (todoId) => {
         }
         return todo; // siempre tienes que regresar la instancia 
     });
+
+    saveInLocal();
 };
 
 /**
@@ -85,6 +110,8 @@ const deleteTodo = (todoId) => {
     // throw new Error('No implemented yet');
     state.todos = state.todos.filter( todo => todo.id != todoId); 
     // Devulevo todos los todos que tengan el id distinto al cual ha borrado
+
+    saveInLocal();
 };
 
 /**
@@ -95,6 +122,8 @@ const deleteCompleted = (todoId) => {
     // throw new Error('No implemented yet');
     state.todos = state.todos.filter( todo => todo.done ); 
     // Parecido al delete pero tiene que aquellos todos que no tengan la propiedad done
+
+    saveInLocal();
 };
 
 /**
@@ -104,6 +133,8 @@ const deleteCompleted = (todoId) => {
 const setFilter = ( newFilter = Filters.All ) => {
     // throw new Error('No implemented yet');
     state.filter = newFilter;
+
+    saveInLocal();
 };
 
 /**
@@ -112,6 +143,8 @@ const setFilter = ( newFilter = Filters.All ) => {
 const getCurrentFilter = () => {
     // throw new Error('No implemented yet');
     return state.filter;
+
+    saveInLocal();
 };
 
 export default {

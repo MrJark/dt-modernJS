@@ -49,7 +49,7 @@ const saveInLocal = () => {
 };
 
 /**
- * Muestra los todos dependiendo del filtro, sino los enseña todos
+ * Muestra los todos dependiendo del filtro, por default los enseña todos
  * @param {string} filter 
  * Puede tener 4 estados: all, completed, pending o no valid
  */

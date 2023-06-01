@@ -1,7 +1,7 @@
 // da error si no pones ' ?raw ' porque está esperando un módulo de js y no un html. Lo bueno de vite es que poniendo ?raw se soluciona
 import html from './app.html?raw'
 import todoStore, {Filters} from '../store/todo.store';
-import { renderTodos } from './use-cases';
+import { renderPending, renderTodos } from './use-cases';
 import { Todo } from './models/todo.models';
 
 // Función para llamra los distintos ids y classes del app.html y que no hayan strings porque es muy volátil. Si en cambian los ids o classses y los tenes en muchas funciones, puede fallar la app si no los quitas, sin embargo, si los tienes todos en una misma fucnión, solo tienes que cambiarlos cada uno, una sola vez
@@ -10,6 +10,7 @@ const ElementsIds = {
     NewTodoInput: '#new-todo-input', // input donde escribir el nuevo todo
     ClearCompleted: '.clear-completed', // boton de limpiar los todos completed
     TodoFilters: '.filtro',
+    PendingCounter: '#pending-count',
 
 };
 
@@ -23,7 +24,12 @@ export const App = ( elementId ) => {
         const todos = todoStore.getTodos( todoStore.getCurrentFilter() );
         // console.log(todos);
         renderTodos( ElementsIds.TodoList, todos ); // llamo al id donde quiero que se renderice y lo que quiero que se renderice, los todos 
-    }
+        countPending();
+    };
+
+    const countPending = () => { // lo llamamos donde sabemos que hay cambios en el store
+        renderPending( ElementsIds.PendingCounter );
+    };
 
     // Función autoinvocada  para cuando se llama a App
     (() => {

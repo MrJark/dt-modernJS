@@ -20,3 +20,7 @@
     Ej: ~~ÃPI_KEY~~ , **VITE_API_KEY:** 
 
     Las formas en las que vite tiene de mostrar las variables .env es: **import.meta.env**
+
+- **Callbacks**
+
+    Son funciones que reciben como **argumento** otra función y se inicializa

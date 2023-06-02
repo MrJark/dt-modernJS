@@ -28,3 +28,9 @@
 - **Callbacks Hells**
 
     Es una recursión de callbacks, es decir, dentro de un callback hay otro callback que a su vez tiene otro callback y así sucesivamente
+
+- **Promises**
+
+    Son "pactos" entre dos partes donde una espera a la otra y si se rompe hay que solucionarlo. Y estas promesas son las que nos ayudan a eliminar los callbacks hell
+    Las promesas tienen dos argumentos: 'resolve' y el 'reject'
+    **Resolve** es lo que pasa cuando se resuelve o se da la promesa y el **reject** es cuando falla esa promesa.

@@ -42,3 +42,4 @@
 
         __Una explicación muy buena viene en el libro **'Charlas TED de Chris Andreson'** donde explica que en una charla TED de **Erin McKean** donde explica a través de una metáfora que a veces JS es como ponerse primero los pantalones y luego la ropa interior. Sabes que no va en ese orden pero funciona y va todo bien. Y así explica las funciones asincronas de js__
 
+        En las funciones asíncrones para el manejo de los errores se usa el try y el catch

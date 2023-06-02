@@ -34,3 +34,11 @@
     Son "pactos" entre dos partes donde una espera a la otra y si se rompe hay que solucionarlo. Y estas promesas son las que nos ayudan a eliminar los callbacks hell
     Las promesas tienen dos argumentos: 'resolve' y el 'reject'
     **Resolve** es lo que pasa cuando se resuelve o se da la promesa y el **reject** es cuando falla esa promesa.
+
+    - **Async** 
+
+        Es la forma actual y mejor de formular promesas. Transforma las funciones en promesas con solo poner la palabra reservada **async**
+        Este tipo de promesas se ejecutan a destiempo, de manera **asíncorna**. Esto quiere decir que no van a seguir el orden establecido de lectura de código línea por línea de arriba a abajo sino que, primero se ejecutará el código síncrono y dejará aquellas funciones y promesas asíncronas en un stack para cuando acabe, seguir con estas últimas.
+
+        __Una explicación muy buena viene en el libro **'Charlas TED de Chris Andreson'** donde explica que en una charla TED de **Erin McKean** donde explica a través de una metáfora que a veces JS es como ponerse primero los pantalones y luego la ropa interior. Sabes que no va en ese orden pero funciona y va todo bien. Y así explica las funciones asincronas de js__
+

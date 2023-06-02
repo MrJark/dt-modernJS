@@ -5,6 +5,7 @@ import { promiseComponent } from './src/concepts/03-promises'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { promiseRaceComponent } from './src/concepts/04-promise-race'
+import { asyncComponent } from './src/concepts/async'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -26,4 +27,5 @@ const element = document.querySelector('.card');
 // environmentsComponent(element);
 // callbacksComponent( element );
 // promiseComponent (element );
-promiseRaceComponent(element);
+// promiseRaceComponent(element);
+asyncComponent( element );

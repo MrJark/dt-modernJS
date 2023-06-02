@@ -11,7 +11,7 @@ export const promiseRaceComponent = ( element ) => {
     const renderValue = ( value ) => {
         element.innerHTML = value;
     }
-    Promise.race([
+    Promise.race([ // la función race hace que se haga una 'carrera' entre las funciones y que retorne en este caso, la más rápida
         slowPromise(),
         midPromise(),
         fastPromise(),

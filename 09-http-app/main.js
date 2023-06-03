@@ -2,6 +2,7 @@ import './style.css';
 import javascriptLogo from './javascript.svg';
 import viteLogo from '/vite.svg';
 import { RickAndMorty } from './src/Rick&Morty/r&m-app';
+import { BrankingBadApp } from './src/BrakingBad/bb-app';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -11,7 +12,7 @@ document.querySelector('#app').innerHTML = `
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
-    <h1>Rick and Morty🧪</h1>
+    <h1 id="app-title"></h1>
     <div class="card">
       
     </div>
@@ -22,3 +23,4 @@ document.querySelector('#app').innerHTML = `
 const element = document.querySelector('.card')
 
 RickAndMorty(element);
+// BrankingBadApp(element);

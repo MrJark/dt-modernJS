@@ -34,4 +34,4 @@ const sleep = () => {
             resolve();
         }, 1000);
     } )
-}
+};

@@ -5,6 +5,7 @@ API that we need: <https://rickandmortyapi.com/documentation/> **Rick and Morty 
 API that we need: <https://breakingbadquotes.xyz> **Braking Bad API**
 
 - **Working with:**
+    No he podido/sabido desestructurar los objetos que me dan en el character de la api
 
     <https://rickandmortyapi.com/api/character>
 
@@ -17,3 +18,7 @@ API that we need: <https://breakingbadquotes.xyz> **Braking Bad API**
     3. species
     4. type
     5. gender -> (female, male, genderless or unknown)
+
+- **Working with:**
+
+    <https://github.com/shevabam/breaking-bad-quotes>

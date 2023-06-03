@@ -1,5 +1,5 @@
 import { baseURL, characterURL } from "./url-shortcuts";
-import { getCharacter } from 'rickmortyapi';
+
 /**
  * @returns {Promise{Objects{}}} Character information
  */
@@ -31,8 +31,12 @@ export const RickAndMorty = ( element ) => {
         characterLabel.innerHTML = data.results.name;
         element.replaceChildren(characterLabel, nextCharacterBtn);
 
+        // Para comprobar si el btn funcionaba
+        // console.log(nextCharacterBtn.addEventListener('click', () => {
+        //     console.log('click');
+        // }));
     };
-
+    
     fetchCharacters()
         .then( data => renderCharacter(data));
 

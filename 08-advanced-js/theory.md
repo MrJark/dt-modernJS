@@ -9,8 +9,8 @@
 
     Los casos de uso mas comunes de estás dependencias .env son:
 
-        1. Para tener variables privadas o API_KEYs
-        2. Para tener URLs específicas
+    1. Para tener variables privadas o API_KEYs
+    2. Para tener URLs específicas
 
     Es común también hacer una copia del archivo .env donde nombre las variables que hay en el archivo privado para ser llamadas y saber cuales se están y cual es su sintaxis.
     **ACTUALIZA SIEMPRE LAS VARIABLES**
@@ -40,6 +40,13 @@
         Es la forma actual y mejor de formular promesas. Transforma las funciones en promesas con solo poner la palabra reservada **async**
         Este tipo de promesas se ejecutan a destiempo, de manera **asíncorna**. Esto quiere decir que no van a seguir el orden establecido de lectura de código línea por línea de arriba a abajo sino que, primero se ejecutará el código síncrono y dejará aquellas funciones y promesas asíncronas en un stack para cuando acabe, seguir con estas últimas.
 
-        __Una explicación muy buena viene en el libro **'Charlas TED de Chris Andreson'** donde explica que en una charla TED de **Erin McKean** donde explica a través de una metáfora que a veces JS es como ponerse primero los pantalones y luego la ropa interior. Sabes que no va en ese orden pero funciona y va todo bien. Y así explica las funciones asincronas de js__
+            Una explicación muy buena viene en el libro **'Charlas TED de Chris Andreson'** donde explica que en una charla TED de **Erin McKean** donde explica a través de una metáfora que a veces JS es como ponerse primero los pantalones y luego la ropa interior. Sabes que no va en ese orden pero funciona y va todo bien. Y así explica las funciones asincronas de js   
 
         En las funciones asíncrones para el manejo de los errores se usa el try y el catch
+- **Funciones Generadoras**
+
+    la sintaxis es ' **function** ' empiezan por minúscula y llevan un asterisc y luego como una función normal
+    En JS estas funciones se suelen usar para funciones asincronas para mitigar o eliminan en ocasiones, el problemas de los callbacks y callbacks hells. Aunque las funciones asíncronas tb lo pueden hacer por si solas
+    Son funciones en las cuales se puede salir y volver a entrar.
+    Recibe varios parámetros como return(), yield() o next()
+    <https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/function*>

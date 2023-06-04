@@ -5,7 +5,7 @@ API that we need: <https://rickandmortyapi.com/documentation/> **Rick and Morty 
 API that we need: <https://breakingbadquotes.xyz> **Braking Bad API**
 
 - **Working with:**
-    No he podido/sabido desestructurar los objetos que me dan en el character de la api
+    ~~ No he podido/sabido desestructurar los objetos que me dan en el character de la api~~ Ya he podido con el .slice()
 
     <https://rickandmortyapi.com/api/character>
 

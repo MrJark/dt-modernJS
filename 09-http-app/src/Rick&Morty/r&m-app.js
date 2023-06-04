@@ -8,7 +8,7 @@ const fetchCharacters = async () => {
     const res = await fetch(`${baseURL}${characterURL}`);
     // const res = await fetch('https://rickandmortyapi.com/api/character'); // ambas const hacen lo mismo pero la primera está más simplificada y es buena práctica
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data;
 };
 
@@ -39,19 +39,19 @@ export const RickAndMorty = ( element ) => {
     const renderCharacter = ( data ) => {
 
         // # entre los cuales debería iterar la funcion para cambiar los valores
-        const dataLength = data.results.length - 1;
-        const antonio = Math.random(dataLength); // no
-        console.log(antonio);
+        const dataLength = data.results.length ;
+        const randomCharacter = Math.floor(Math.random(dataLength) * data.results.length); // esta función me da los valores aleatorios entre el 0 y data.results.length - 1 que es 20
+        console.log(randomCharacter);
         
-        // prueba de ciclos for
-        for( let i = 0; i < data.results.length - 1; i++) {
-            console.log(data.results.slice(0)[i].name);
-        };
+        // prueba de ciclos for ( de esta forma no porque me los da todos, no uno solo )
+        // for( let i = 0; i < data.results.length ; i++) {
+        //     console.log(data.results.slice(0)[i].name);
+        // };
 
-        characterNameLabel.innerHTML = 'Name: ' + data.results.slice(0)[3].name;
-        characterOriginLabel.innerHTML = 'Origin: ' + data.results.slice(0)[3].origin.name;
-        characterSpecieLabel.innerHTML = 'Specie: ' + data.results.slice(0)[3].species;
-        characterStatusLabel.innerHTML = 'Status: ' + data.results.slice(0)[3].status;
+        characterNameLabel.innerHTML = 'Name: ' + data.results.slice(0)[randomCharacter].name;
+        characterOriginLabel.innerHTML = 'Origin: ' + data.results.slice(0)[randomCharacter].origin.name;
+        characterSpecieLabel.innerHTML = 'Specie: ' + data.results.slice(0)[randomCharacter].species;
+        characterStatusLabel.innerHTML = 'Status: ' + data.results.slice(0)[randomCharacter].status;
 
         element.replaceChildren(
             characterNameLabel, 

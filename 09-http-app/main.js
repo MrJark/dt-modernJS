@@ -1,8 +1,7 @@
 import './style.css';
 import javascriptLogo from './javascript.svg';
 import viteLogo from '/vite.svg';
-import { UsersApp } from './src/users/users-app';
-// import { RickAndMorty } from './src/Rick&Morty/r&m-app';
+import { RickAndMorty } from './src/Rick&Morty/r&m-app';
 // import { BrankingBadApp } from './src/BrakingBad/bb-app';
 
 document.querySelector('#app').innerHTML = `
@@ -23,6 +22,5 @@ document.querySelector('#app').innerHTML = `
 
 const element = document.querySelector('.card');
 
-// RickAndMorty(element);
+RickAndMorty(element);
 // BrankingBadApp(element);
-UsersApp(element);

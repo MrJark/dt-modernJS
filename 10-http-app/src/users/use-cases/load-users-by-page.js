@@ -7,9 +7,9 @@ import { User } from "../models/user";
  * @param {number} page
  * @returns {Promise<User[]>}
  */
-export const loadUsersByPage = async ( pagination = 3 ) => {
+export const loadUsersByPage = async ( pagination = 2 ) => {
 
-    const url = `${import.meta.env.VITE_BASE_URL}/users?_page=3`; // no funciona por ahora el pagination por tanto, lo pongo a mano
+    const url = `${import.meta.env.VITE_BASE_URL}/users?_page=2`; // no funciona por ahora el pagination por tanto, lo pongo a mano
     const res = await fetch(url);
     const data = await res.json();
     

@@ -4,12 +4,12 @@ import { User } from "../models/user";
 
 /**
  * 
- * @param {number} page 
+ * @param {number} pages
  * @returns {Promise<User[]>}
  */
-export const loadUsersByPage = async ( page = 1 ) => {
+export const loadUsersByPage = async ( pages = 1 ) => {
 
-    const url = `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_USERS}${import.meta.env.VITE_PAGE_}${page}`;
+    const url = `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_USERS}${import.meta.env.VITE_PAGE}${pages}`;
     const res = await fetch(url);
     const data = await res.json();
     

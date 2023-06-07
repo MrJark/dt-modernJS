@@ -7,7 +7,12 @@ const state = {
 
 const loadNextPage = async () => {
     // throw new Error('Not implemenrted yet');
-    await loadUsersByPage(state.curentPage + 1);
+    const users = await loadUsersByPage(state.curentPage + 1);
+    if ( users.length === 0) return; // si no hay usuarios, o solicito una página donde no los hay, no me retornará nada
+
+    // Pero si sí hay usuarios, me vaya sumando las páginas y users sea = users
+    state.curentPage += 1;
+    state.users = users;
 };
 
 const loadPrevioustPage = async () => {

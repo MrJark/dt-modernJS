@@ -25,13 +25,14 @@ export const saveUser = async ( userLike ) => {
 const createUser = async ( user ) => {
 
     const url = `${import.meta.env.VITE_BASE_URL}/users`;
-    const res = await fetch(url, { // si no pusiera esto, sería un GET, para obtener info y yo quiero postear, POST
+    const res = await fetch(url, { 
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
-            'Content Type': 'application/json'
+            'Content-Type': 'application/json'
         }
-    })
+    });
+    // si no pusiera nada, sería un GET, para obtener info y como yo quiero postear, uso POST
 
     const newUser = await res.json();
     console.log({newUser});

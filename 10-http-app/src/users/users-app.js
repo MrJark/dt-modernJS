@@ -1,6 +1,7 @@
 import { renderTable } from "./presentation/render-table/render-table";
 import usersStore from "./store/users-store";
 import { renderBtn } from "./presentation/render-btn/render-btn";
+import { renderAddBtn } from "./presentation/render-add-btn/render-add-btn";
 
 /**
  * 
@@ -16,4 +17,5 @@ export const UsersApp = async (element, title) => {
 
     renderTable( element );
     renderBtn(element);
+    renderAddBtn(element );
 };

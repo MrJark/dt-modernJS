@@ -18,6 +18,6 @@ export const loadUsersByPage = async ( pagination = 1 ) => {
     // const users = data.map( userLike => localhostUserToModel(userLike));
     const users = data.map( localhostUserToModel );
 
-    console.log(users);
+    // console.log(users);
     return users;
 };

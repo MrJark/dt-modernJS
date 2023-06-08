@@ -1,3 +1,4 @@
+import { showModal } from '../render-modal/render-modal';
 import './render-add-btn.css';
 
 /**
@@ -14,7 +15,7 @@ export const renderAddBtn = async ( element ) => {
     element.append(fabBtn);
 
     fabBtn.addEventListener('click', () => {
-        throw alert( new Error('Not implemented yet') ); 
-        
+        // throw alert( new Error('Not implemented yet') ); 
+        showModal();
     });
 };

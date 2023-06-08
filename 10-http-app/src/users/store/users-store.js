@@ -2,22 +2,28 @@ import  {loadUsersByPage}  from "../use-cases/load-users-by-page"; // he intenta
 
 const state = {
     users: [], 
-    curentPage: 0,
+    currentPage: 0,
 };
 
 const loadNextPage = async () => {
     // throw new Error('Not implemenrted yet');
-    const users = await loadUsersByPage(state.curentPage + 1);
+    const users = await loadUsersByPage(state.currentPage + 1);
     if ( users.length === 0) return; // si no hay usuarios, o solicito una página donde no los hay, no me retornará nada
 
     // Pero si sí hay usuarios, me vaya sumando las páginas y users sea = users
-    state.curentPage += 1;
+    state.currentPage += 1;
     state.users = users;
 };
 
+// Reto: hacer que el btn de prev page funcione (conseguido!!)
 const loadPrevioustPage = async () => {
-    throw new Error('Not implemenrted yet');
+    // throw new Error('Not implemenrted yet');
+    const users = await loadUsersByPage(state.currentPage - 1);
+    if (users.length === 0 || state.currentPage === 1) return;
 
+    state.currentPage -= 1;
+    state.users = users;
+    
 };
 
 const onUserChanged = () => {
@@ -46,5 +52,5 @@ export default {
      * 
      * @returns {Number} Page
      */
-    getCurrentPage: () => state.curentPage,
+    getCurrentPage: () => state.currentPage,
 };

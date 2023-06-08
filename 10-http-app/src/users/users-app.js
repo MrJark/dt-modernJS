@@ -1,5 +1,6 @@
 import { renderTable } from "./presentation/render-table/render-table";
 import usersStore from "./store/users-store";
+import { renderBtn } from "./presentation/render-btn/render-btn";
 
 /**
  * 
@@ -14,4 +15,5 @@ export const UsersApp = async (element, title) => {
     element.innerHTML = ''; // quito el loading porque ya no está cargando, ya tengo la tabla
 
     renderTable( element );
+    renderBtn(element);
 };

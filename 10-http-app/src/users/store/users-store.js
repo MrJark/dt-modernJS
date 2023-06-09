@@ -50,7 +50,13 @@ const onUserChanged = (updateUser) => {
 };
 
 const reloadPage = async () => {
-    throw new Error('Not implemenrted yet');
+    // throw new Error('Not implemenrted yet');
+    const users = await loadUsersByPage(state.currentPage);
+    if ( users.length === 0) {
+        await loadPrevioustPage(); // si nos quedamos sin U en esa página, vamos directamente a la página anterior
+        return;
+    }
+    state.users = users;
 
 };
 

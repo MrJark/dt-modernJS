@@ -23,6 +23,7 @@ export const UsersApp = async (element, title) => {
     renderModal( element, async (userLike) => { // el segundo argumento es el callback que me guarda el objeto user
         const user = await saveUser(userLike); // función para uardar el nuevo user, userLike
         usersStore.onUserChanged(user); // función para cambios en los usuarios
+        // console.log(user);
         renderTable(); // renderizar el modal con los nuevos users añadidos
     } );
 };

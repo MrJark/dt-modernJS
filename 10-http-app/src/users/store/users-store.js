@@ -1,3 +1,4 @@
+import { User } from "../models/user";
 import  {loadUsersByPage}  from "../use-cases/load-users-by-page"; // he intentado hacer este import y tampoco funciona
 
 const state = {
@@ -26,8 +27,25 @@ const loadPrevioustPage = async () => {
     
 };
 
-const onUserChanged = () => {
-    throw new Error('Not implemenrted yet');
+/**
+ * 
+ * @param {User} updateUser 
+ */
+const onUserChanged = (updateUser) => {
+    // throw new Error('Not implemenrted yet');
+    let wasFound = false;
+
+    state.users = state.users.map( user => {
+        if(user.id === updateUser.id) {
+            wasFound = true;
+            return updateUser;
+        }
+        return user;
+    });
+
+    if( state.users.length < 10 && !wasFound) { // users mínimos por página
+        state.users.push(updateUser);
+    }
 
 };
 

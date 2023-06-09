@@ -14,7 +14,7 @@ Nueva función que permite cambiar un elemento del array al generar una copia de
 ### at()
 <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/at>
 
-### .to... Son métodos antiguos que en el ES6, al añadirle delante el 'to' cambian
+### .toMethods Son métodos antiguos que en el ES6, al añadirle delante el 'to' cambian
   - **to.Sorted()** ordena un array alfabéticamente sin modificar el original cosa que si hace el método .sort(). MDN: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted>
   - **.toReversed()** ordena el array anti-alfabéticamente sin modificar el array original vs el .reserve() que hacia esto mismo pero modificando el original
-  - **.toSplice()
+  - **.toSpliced()**

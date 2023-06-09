@@ -3,7 +3,8 @@ import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 // import './11.1-array/array-structureclone';
-import './11.1-array/array-with'
+// import './11.1-array/array-with';
+import './11.1-array/array-to-method';
 
 document.querySelector('#app').innerHTML = `
   <div>
